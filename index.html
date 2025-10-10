@@ -1,69 +1,428 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Respirahoy — Tu calma, tu espacio</title>
-  <style>
-    body {
-      background: linear-gradient(135deg, #cce5ff, #e6fff2);
-      font-family: 'Segoe UI', sans-serif;
-      color: #333;
-      text-align: center;
-      padding: 50px;
-    }
-    h1 {
-      font-size: 2.2em;
-      color: #207868;
-    }
-    p {
-      font-size: 1.2em;
-      line-height: 1.6em;
-      margin: 20px auto;
-      max-width: 600px;
-    }
-    button {
-      background-color: #207868;
-      color: white;
-      border: none;
-      padding: 15px 25px;
-      font-size: 1em;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background-color: #14594b;
-    }
-    footer {
-      margin-top: 50px;
-      font-size: 0.9em;
-      color: #777;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Respirahoy — Relajación personalizada</title>
+<meta name="description" content="Respirahoy — genera frases, sonidos y vídeos calmantes según tu estado de ánimo. Prueba gratis, paga solo al final si quieres la versión completa.">
+<style>
+  /* ---- Reset y base ---- */
+  :root{
+    --bg1: #eaf6ff;
+    --bg2: #f2fff6;
+    --card: #ffffff;
+    --accent: #1f7a8c;
+    --accent-2:#63b3d8;
+    --muted:#6b7a84;
+    --glass: rgba(255,255,255,0.6);
+    --maxwidth:1100px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:#093047; -webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--maxwidth);margin:0 auto;padding:22px}
+  header.site-header{display:flex;align-items:center;gap:16px;padding:12px 0}
+  .logo{font-weight:800;color:var(--accent);text-decoration:none;font-size:22px}
+  nav.main-nav{margin-left:auto;display:flex;gap:10px}
+  nav a{color:var(--muted);text-decoration:none;padding:8px;border-radius:8px}
+  .hero{display:grid;grid-template-columns:1fr 420px;gap:26px;align-items:center;margin:18px 0}
+  .hero-card{background:linear-gradient(180deg,var(--glass), rgba(255,255,255,0.45));border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(9,48,71,0.06)}
+  .hero h1{margin:0 0 8px;font-size:32px;color:#055a66}
+  .lead{color:var(--muted);font-size:16px;margin-bottom:16px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
+  .btn{background:var(--accent);color:#fff;padding:12px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:600;box-shadow:0 6px 18px rgba(31,122,140,0.18)}
+  .btn.ghost{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+  .moods{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .mood{background:#fff;padding:10px 14px;border-radius:12px;border:1px solid #e6f4f8;cursor:pointer;box-shadow:0 6px 20px rgba(9,48,71,0.04)}
+  .app-preview{background:linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6));border-radius:16px;padding:18px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  .screen{width:360px;height:640px;border-radius:18px;background:radial-gradient(circle at 30% 20%, rgba(60,140,200,0.12), transparent 35%);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:20px;position:relative;overflow:hidden}
+  .visual-breath{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(98,167,189,0.18), transparent 40%);display:flex;align-items:center;justify-content:center;transition:transform 2s ease-in-out}
+  .session-title{font-weight:700;color:#053e4a;margin-top:18px}
+  .phrase{font-style:italic;color:#3f6b73;margin-top:12px;min-height:48px}
+  .player{margin-top:18px;width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .time{color:var(--muted);font-weight:600}
+  .controls{display:flex;gap:8px;align-items:center}
+  /* cards */
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
+  .card{background:#fff;padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(9,48,71,0.04)}
+  .card h3{margin:0 0 8px;color:#044b55}
+  .small{padding:8px 12px;font-size:13px}
+  footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center;padding-bottom:40px}
+  /* modal */
+  .modal{position:fixed;inset:0;background:rgba(4,12,18,0.45);display:flex;align-items:center;justify-content:center;padding:20px;z-index:200}
+  .modal-card{background:linear-gradient(180deg,#fff,#f7feff);padding:20px;border-radius:14px;max-width:480px;width:100%;text-align:center;box-shadow:0 10px 40px rgba(4,12,18,0.25)}
+  .modal h3{margin:0 0 8px;color:#044b55}
+  /* responsive */
+  @media(max-width:980px){
+    .hero{grid-template-columns:1fr; padding-bottom:8px}
+    .screen{width:280px;height:540px}
+    .grid{grid-template-columns:1fr}
+  }
+</style>
 </head>
 <body>
-  <h1>🌿 Bienvenida a Respirahoy 🌿</h1>
-  <p>Relájate unos minutos. Cierra los ojos, respira profundo y deja que tu mente se calme.</p>
-  
-  <p>💬 “Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.”</p>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="logo">Respirahoy</a>
+      <nav class="main-nav">
+        <a href="#home">Inicio</a>
+        <a href="#create">Crear sesión</a>
+        <a href="#about">Sobre</a>
+        <a href="#contact">Contacto</a>
+      </nav>
+    </header>
 
-  <button onclick="showPremium()">Quiero seguir esta experiencia completa 🌙 (versión premium)</button>
+    <section class="hero">
+      <div class="hero-card">
+        <h1>Respirahoy — Tu calma, a la medida</h1>
+        <p class="lead">Elige cómo te sientes y deja que la experiencia te guíe: sonidos, frases y visuales creados para volver a la calma. Gratis al principio; pago solo si quieres la experiencia completa.</p>
 
-  <div id="premium" style="display:none; margin-top:30px;">
-    <h3>✨ Versión Premium ✨</h3>
-    <p>Accede a sonidos, frases y videos exclusivos para alcanzar tu equilibrio interior.</p>
-    <button onclick="alert('Aquí iría el pago premium (próximamente)')">Desbloquear Premium</button>
+        <div class="moods" id="moodButtons">
+          <div class="mood" data-mood="ansiedad">Ansiedad</div>
+          <div class="mood" data-mood="estres">Estrés</div>
+          <div class="mood" data-mood="tristeza">Tristeza</div>
+          <div class="mood" data-mood="cansancio">Cansancio</div>
+          <div class="mood" data-mood="alegria">Alegría</div>
+        </div>
+
+        <div class="cta-row">
+          <button class="btn" id="startQuick">Crear sesión rápida</button>
+          <button class="btn ghost" id="howItWorks">Cómo funciona</button>
+        </div>
+
+        <div class="grid" style="margin-top:20px">
+          <div class="card">
+            <h3>Sesiones inmediatas</h3>
+            <p class="lead" style="margin:0">5–15 minutos guiados para calmarte ahora.</p>
+          </div>
+          <div class="card">
+            <h3>Frases personalizadas</h3>
+            <p class="lead" style="margin:0">Mensajes que te sostienen después de cada sesión.</p>
+          </div>
+          <div class="card">
+            <h3>Sin estrés al pagar</h3>
+            <p class="lead" style="margin:0">Solo mostramos la opción premium al final de la experiencia.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="app-preview">
+        <div class="screen" role="application" aria-label="Preview app screen">
+          <div id="visual" class="visual-breath" style="transform:scale(1)"></div>
+          <div class="session-title" id="sessionTitle">Bienvenida — Respirahoy</div>
+          <div class="phrase" id="phrase">Selecciona tu estado de ánimo para empezar.</div>
+
+          <div class="player" style="margin-top:auto">
+            <div class="controls">
+              <button class="btn small" id="playPause" disabled>Reproducir</button>
+              <button class="btn small ghost" id="stop" disabled>Detener</button>
+            </div>
+            <div class="time" id="timeLeft">00:00</div>
+          </div>
+        </div>
+
+        <div style="width:100%;text-align:center;margin-top:12px">
+          <small style="color:var(--muted)">Pruébalo gratis — si quieres más, el botón premium aparecerá al final.</small>
+        </div>
+      </div>
+    </section>
+
+    <section id="create" style="margin-top:18px">
+      <div class="hero-card">
+        <h2 style="margin-top:0">Crear sesión personalizada</h2>
+        <label style="display:block;margin:8px 0">Tu nombre (opcional)
+          <input id="userName" placeholder="Ej. Sonia" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6f4f8;margin-top:6px">
+        </label>
+
+        <label style="display:block;margin:8px 0">Duración (min)
+          <select id="duration" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6f4f8;margin-top:6px">
+            <option>3</option><option>5</option><option selected>10</option><option>15</option>
+          </select>
+        </label>
+
+        <label style="display:block;margin:8px 0">Tipo de guía
+          <select id="voice" style="width:100%;padding:8px;border-radius:8px;border:1px solid #e6f4f8;margin-top:6px">
+            <option value="female">Femenina suave</option>
+            <option value="male">Masculina cálida</option>
+            <option value="none">Solo sonido</option>
+          </select>
+        </label>
+
+        <div style="display:flex;gap:8px;margin-top:8px">
+          <button class="btn" id="startBtn">Comenzar sesión</button>
+          <button class="btn ghost" id="finalizeBtn">Finalizar (ver premium)</button>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="about" style="margin-top:18px">
+      <div class="hero-card">
+        <h2 style="margin-top:0">Sobre Respirahoy</h2>
+        <p style="margin:0">Respirahoy nace para que la calma sea accesible. Esta demo genera sonidos en el navegador (sin archivos externos) y muestra la experiencia completa para probar. Si te gusta, puedes desbloquear la versión premium al final.</p>
+      </div>
+    </section>
+
+    <section id="contact" style="margin-top:18px">
+      <div class="hero-card">
+        <h2 style="margin-top:0">Contacto</h2>
+        <p style="margin:0">Correo: <a href="mailto:sonia69874@gmail.com">sonia69874@gmail.com</a></p>
+      </div>
+    </section>
+
+    <footer>© Respirahoy — Creado por Sonia Morera</footer>
   </div>
 
-  <footer>
-    Creado con calma por Respirahoy 💙 — Respirahoy © 2025
-  </footer>
+  <!-- FINAL modal (frase emocional + CTA premium) -->
+  <div id="finalModal" class="modal" style="display:none">
+    <div class="modal-card">
+      <h3 id="finalTitle">Tu calma es tuya</h3>
+      <p id="finalText">Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.</p>
+      <div style="margin-top:14px;display:flex;gap:10px;justify-content:center">
+        <button class="btn" id="premiumBtn">Quiero seguir esta experiencia completa 🌙 (versión premium)</button>
+        <button class="btn ghost" id="closeFinal">Volver</button>
+      </div>
+    </div>
+  </div>
 
-  <script>
-    function showPremium() {
-      document.getElementById('premium').style.display = 'block';
-    }
-  </script>
+<script>
+/* ----------------------
+   Lógica principal: UI + WebAudio + frases + flujo premium
+   ---------------------- */
+
+(function(){
+  // helpers
+  const $ = (s)=>document.querySelector(s);
+  const $$ = (s)=>Array.from(document.querySelectorAll(s));
+
+  // UI elements
+  const moodButtons = $$('#moodButtons .mood');
+  const phraseEl = $('#phrase');
+  const sessionTitle = $('#sessionTitle');
+  const visual = $('#visual');
+  const playPause = $('#playPause');
+  const stopBtn = $('#stop');
+  const timeLeft = $('#timeLeft');
+  const startBtn = $('#startBtn');
+  const durationSel = $('#duration');
+  const userName = $('#userName');
+  const finalizeBtn = $('#finalizeBtn');
+  const startQuick = $('#startQuick');
+  const finalModal = $('#finalModal');
+  const premiumBtn = $('#premiumBtn');
+  const closeFinal = $('#closeFinal');
+  const howItWorks = $('#howItWorks');
+
+  // phrases by mood
+  const phrases = {
+    ansiedad: [
+      "Inhala con calma, suelta lo que no te sirve.",
+      "Un respiro a la vez. Estás seguro/a ahora.",
+      "Tu cuerpo recuerda cómo relajarse."
+    ],
+    estres: [
+      "Deja que la tensión se disuelva como niebla.",
+      "Pequeños descansos, gran alivio.",
+      "Eres más fuerte de lo que crees."
+    ],
+    tristeza: [
+      "Está bien sentir, y está bien sanar poco a poco.",
+      "Hoy te sostienes con ternura.",
+      "Las nubes pasan; tú sigues aquí."
+    ],
+    cansancio: [
+      "Regálate un momento; no tienes que rendir ahora.",
+      "Respira profundo y descansa la mente.",
+      "Tu cuerpo pide pausa; escucha."
+    ],
+    alegria: [
+      "Siente la calma que acompaña a la alegría.",
+      "Sonríe por dentro y respira.",
+      "Este momento te pertenece."
+    ]
+  };
+
+  function pickPhrase(mood){ const arr=phrases[mood]||["Respira, estás bien."]; return arr[Math.floor(Math.random()*arr.length)]; }
+
+  // WebAudio (simple ambient generator)
+  let audioCtx, masterGain, oscA, oscB, noiseSource, running=false;
+  function initAudio(){
+    if(audioCtx) return;
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain(); masterGain.gain.value = 0; masterGain.connect(audioCtx.destination);
+  }
+  function startAmbient(mood){
+    initAudio(); stopAmbient();
+    const baseFreq = {ansiedad:220, estres:190, tristeza:170, cansancio:130, alegria:262}[mood]||200;
+    // two oscillators for warmth
+    oscA = audioCtx.createOscillator(); oscA.type='sine'; oscA.frequency.value = baseFreq;
+    oscB = audioCtx.createOscillator(); oscB.type='triangle'; oscB.frequency.value = baseFreq*1.5;
+    const gA = audioCtx.createGain(); gA.gain.value=0.02;
+    const gB = audioCtx.createGain(); gB.gain.value=0.01;
+    oscA.connect(gA); gA.connect(masterGain);
+    oscB.connect(gB); gB.connect(masterGain);
+    oscA.start(); oscB.start();
+
+    // noise texture
+    const bufferSize = 2*audioCtx.sampleRate;
+    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const output = noiseBuffer.getChannelData(0);
+    for(let i=0;i<bufferSize;i++) output[i] = (Math.random()*2-1)*0.12;
+    noiseSource = audioCtx.createBufferSource(); noiseSource.buffer = noiseBuffer; noiseSource.loop=true;
+    const noiseFilter = audioCtx.createBiquadFilter(); noiseFilter.type='lowpass';
+    noiseFilter.frequency.value = {ansiedad:900, estres:700, tristeza:600, cansancio:450, alegria:900}[mood]||700;
+    noiseSource.connect(noiseFilter); noiseFilter.connect(masterGain);
+    noiseSource.start(0);
+
+    // fade in
+    masterGain.gain.cancelScheduledValues(audioCtx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2);
+    running=true;
+  }
+  function stopAmbient(){
+    if(!audioCtx) return;
+    try{ masterGain.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime + 0.5); }catch(e){}
+    try{ if(noiseSource) noiseSource.stop(); }catch(e){}
+    try{ if(oscA) oscA.stop(); if(oscB) oscB.stop(); }catch(e){}
+    noiseSource=null; oscA=null; oscB=null; running=false;
+  }
+
+  // breathing visual animation (scale)
+  let breathInterval=null;
+  function startVisual(){
+    let scale = 1; let dir = 1;
+    clearInterval(breathInterval);
+    breathInterval = setInterval(()=>{
+      if(dir>0){ scale += 0.03; if(scale>=1.14) dir=-1; }
+      else { scale -= 0.03; if(scale<=0.88) dir=1; }
+      visual.style.transform = `scale(${scale})`;
+    }, 80);
+  }
+  function stopVisual(){ clearInterval(breathInterval); visual.style.transform='scale(1)'; }
+
+  // session/timer logic
+  let sessionTimer = null;
+  function startSession(mood, minutes){
+    // set UI
+    const name = userName.value ? userName.value + " — " : "";
+    sessionTitle.textContent = `${name}${mood.toUpperCase()} • ${minutes} min`;
+    const phrase = pickPhrase(mood);
+    phraseEl.textContent = `"${phrase}"`;
+    // audio + visual
+    startAmbient(mood); startVisual();
+    playPause.disabled=false; stopBtn.disabled=false;
+    // timer
+    let seconds = minutes*60;
+    updateTime(seconds);
+    sessionTimer = setInterval(()=>{
+      seconds--;
+      if(seconds<=0){ clearInterval(sessionTimer); endSession(); }
+      updateTime(seconds);
+    },1000);
+  }
+  function updateTime(s){
+    const m = Math.floor(s/60).toString().padStart(2,'0');
+    const sec = (s%60).toString().padStart(2,'0');
+    timeLeft.textContent = `${m}:${sec}`;
+  }
+  function endSession(){
+    stopAmbient(); stopVisual();
+    playPause.disabled=true; stopBtn.disabled=true;
+    // show final modal with emotional phrase and CTA
+    $('#finalText').textContent = "Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.";
+    finalModal.style.display = 'flex';
+  }
+
+  // events
+  moodButtons.forEach(btn=>{
+    btn.addEventListener('click', ()=> {
+      const m = btn.dataset.mood;
+      // quick preview
+      phraseEl.textContent = `"${pickPhrase(m)}"`;
+      sessionTitle.textContent = `Previsualizando — ${m}`;
+      // animate button
+      btn.style.transform='translateY(-3px)';
+      setTimeout(()=>btn.style.transform='',150);
+    });
+  });
+
+  startBtn.addEventListener('click', ()=>{
+    const mood = document.getElementById('moodSelect') ? document.getElementById('moodSelect').value : (document.querySelector('#moodButtons .mood') ? document.querySelector('#moodButtons .mood').dataset.mood : 'relax');
+    // choose selected mood from highlight (if none, default to 'ansiedad')
+    const highlighted = document.querySelector('#moodButtons .mood[data-selected="true"]');
+    const selectedMood = highlighted ? highlighted.dataset.mood : (mood || 'ansiedad');
+    const mins = parseInt(durationSel.value,10) || 10;
+    // resume audio context if suspended (user gesture)
+    if(audioCtx && audioCtx.state === 'suspended'){ audioCtx.resume(); }
+    startSession(selectedMood, mins);
+  });
+
+  // quick start: pick first mood & start
+  startQuick.addEventListener('click', ()=>{
+    // pick a default mood (first button)
+    const m = moodButtons[0].dataset.mood;
+    durationSel.value = 5;
+    startSession(m, 5);
+  });
+
+  // stop button
+  stopBtn.addEventListener('click', ()=>{ clearInterval(sessionTimer); stopAmbient(); stopVisual(); playPause.disabled=true; stopBtn.disabled=true; timeLeft.textContent='00:00'; });
+
+  // finalize/premium button (shows modal)
+  finalizeBtn.addEventListener('click', ()=>{
+    // show the final modal directly
+    $('#finalText').textContent = "Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.";
+    finalModal.style.display = 'flex';
+  });
+
+  // premium button: simulate payment + show success
+  premiumBtn.addEventListener('click', ()=>{
+    // Simulación de pago rápido. En producción: integrar Stripe/PayPal (instrucciones abajo)
+    premiumBtn.disabled = true;
+    premiumBtn.textContent = 'Procesando...';
+    setTimeout(()=>{
+      premiumBtn.textContent = 'Gracias — Premium activado 🌙';
+      alert('Pago simulado: Premium activado. En una integración real abriríamos Stripe/PayPal aquí.');
+      finalModal.style.display='none';
+    },1200);
+  });
+
+  closeFinal.addEventListener('click', ()=> finalModal.style.display='none');
+
+  // How it works
+  howItWorks.addEventListener('click', ()=>{
+    alert('Elige cómo te sientes → Crea sesión → Prueba gratis. Si quieres descargar o desbloquear contenido, pulsa el botón Premium al final de la sesión.');
+  });
+
+  // small UX: enable selecting mood by click (highlight)
+  moodButtons.forEach(b=>{
+    b.addEventListener('click', ()=> {
+      moodButtons.forEach(x=>x.removeAttribute('data-selected'));
+      b.setAttribute('data-selected','true');
+    });
+  });
+
+  // Accessibility: resume audio on first user gesture
+  document.body.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); });
+
+  // initial small animation
+  (function pulse(){
+    visual.style.transition='transform 1.8s ease-in-out';
+    visual.style.transform='scale(1.02)';
+    setTimeout(()=>visual.style.transform='scale(1)',1200);
+    setTimeout(pulse,2600);
+  })();
+
+})(); // end IIFE
+</script>
+
+<!-- README & instrucciones rápidas para cuando quieras pagos reales -->
+<!--
+  INSTRUCCIONES para integrar pagos reales (resumen):
+  1) Stripe Payment Links (fácil): crea cuenta en stripe.com > Payment Links > crea un enlace de pago para "Descarga audio" o "Suscripción".
+     Luego reemplaza la acción de premiumBtn (en JS) por: window.location.href = 'TU_PAYMENT_LINK_STRIPE';
+  2) Stripe Checkout (recomendado si quieres más control): necesitarás un backend seguro que cree sesiones de Checkout. Puedo proporcionarte el código.
+  3) PayPal: también puedes usar PayPal Payment Links o Buttons, y redirigir a la URL de pago.
+  Si quieres, te preparo el código exacto para Stripe (sin coste) y te explico paso a paso.
+-->
 </body>
 </html>
