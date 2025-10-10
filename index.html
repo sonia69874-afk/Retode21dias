@@ -3,13 +3,67 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Respirahoy — Relajación personalizada</title>
+  <title>Respirahoy — Tu calma, tu espacio</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #cce5ff, #e6fff2);
+      font-family: 'Segoe UI', sans-serif;
+      color: #333;
+      text-align: center;
+      padding: 50px;
+    }
+    h1 {
+      font-size: 2.2em;
+      color: #207868;
+    }
+    p {
+      font-size: 1.2em;
+      line-height: 1.6em;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+    button {
+      background-color: #207868;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background-color: #14594b;
+    }
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
   <h1>🌿 Bienvenida a Respirahoy 🌿</h1>
-  <p>Tu espacio de calma. Elige tu estado de ánimo y deja que la web te ayude a respirar y relajarte.</p>
+  <p>Relájate unos minutos. Cierra los ojos, respira profundo y deja que tu mente se calme.</p>
+  
   <p>💬 “Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.”</p>
-  <button>Quiero seguir esta experiencia completa 🌙 (versión premium)</button>
-  <p>Creado con cariño por Sonia Morera 💙</p>
+
+  <button onclick="showPremium()">Quiero seguir esta experiencia completa 🌙 (versión premium)</button>
+
+  <div id="premium" style="display:none; margin-top:30px;">
+    <h3>✨ Versión Premium ✨</h3>
+    <p>Accede a sonidos, frases y videos exclusivos para alcanzar tu equilibrio interior.</p>
+    <button onclick="alert('Aquí iría el pago premium (próximamente)')">Desbloquear Premium</button>
+  </div>
+
+  <footer>
+    Creado con calma por Respirahoy 💙 — Respirahoy © 2025
+  </footer>
+
+  <script>
+    function showPremium() {
+      document.getElementById('premium').style.display = 'block';
+    }
+  </script>
 </body>
 </html>
