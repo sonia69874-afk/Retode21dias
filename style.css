@@ -1,87 +1,166 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+/* Estilos generales */
 body {
   font-family: 'Poppins', sans-serif;
   margin: 0;
-  background: linear-gradient(180deg, #fafafa, #e0e7ff);
+  background: linear-gradient(to bottom, #f0f4ff, #ffffff);
   color: #333;
+  line-height: 1.6;
+}
+
+/* Header y navegación */
+header {
+  background-color: #4f46e5;
+  color: white;
+  padding: 20px 0;
   text-align: center;
 }
 
-header {
-  background: #4f46e5;
-  color: white;
-  padding: 15px 0;
+header h1 {
+  margin: 0;
+  font-size: 2.2rem;
 }
 
 nav a {
   color: white;
   text-decoration: none;
   margin: 0 15px;
-  font-weight: 500;
+  font-weight: bold;
 }
 
 nav a:hover {
   text-decoration: underline;
 }
 
+/* Hero */
 .hero {
-  text-align: center;
-  padding: 100px 20px;
-  background: linear-gradient(to right, #6366f1, #a78bfa);
+  background: url('https://images.unsplash.com/photo-1557682250-201f96c09f0b?auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
   color: white;
+  padding: 100px 20px;
 }
 
 .hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 20px;
 }
 
-button {
-  background: white;
-  color: #4f46e5;
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+}
+
+.hero button {
+  background-color: #ff6b6b;
+  color: white;
   border: none;
-  padding: 12px 30px;
+  padding: 15px 30px;
+  font-size: 1.1rem;
   border-radius: 30px;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
 }
 
-button:hover {
-  background: #4f46e5;
-  color: white;
-  transition: 0.3s;
-  transform: scale(1.05);
+.hero button:hover {
+  background-color: #e55a5a;
 }
 
+/* Secciones */
 section {
   padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Retos */
 .retos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
-  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
 .reto-card {
-  background: white;
+  background-color: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  padding: 20px;
-  transition: all 0.3s ease;
+  padding: 25px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  width: 280px;
+  transition: transform 0.3s;
 }
 
 .reto-card:hover {
   transform: translateY(-5px);
 }
 
+.reto-card h3 {
+  margin-top: 0;
+  font-size: 1.5rem;
+}
+
+.reto-card button {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.reto-card button:hover {
+  background-color: #3730a3;
+}
+
+/* Testimonios */
+.testimonios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.testimonio-card {
+  background-color: #f9f9f9;
+  border-radius: 15px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+
+.testimonio-card img {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.testimonio-card p {
+  font-style: italic;
+}
+
+/* Footer */
 footer {
-  background: #111;
-  color: #ccc;
-  padding: 40px 20px;
+  background-color: #4f46e5;
+  color: white;
+  padding: 30px 20px;
   text-align: center;
-  font-size: 0.9rem;
+}
+
+footer a {
+  color: #ffdd57;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Botones generales */
+button {
+  transition: all 0.3s ease;
+}
+
+@media(max-width:768px){
+  .retos, .testimonios {
+    flex-direction: column;
+    align-items: center;
+  }
 }
