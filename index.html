@@ -3,176 +3,239 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reto21Días</title>
+<title>Reto21Días - Transforma tu vida</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-body {margin:0;font-family:Arial,sans-serif;background:#f9f9f9;color:#333;}
-a{text-decoration:none;color:#333;}
-button,input[type="submit"]{cursor:pointer;}
+  /* Reset y tipografía */
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+  body{background:#fefefe;color:#333;line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
 
-/* Header */
-header{background:#ff6b6b;color:white;padding:15px 0;text-align:center;}
-nav a{margin:0 15px;color:white;font-weight:bold;}
+  /* Contenedor general */
+  .container{width:90%;max-width:1200px;margin:0 auto;}
 
-/* Hero */
-.hero{background:#ff9f43;color:white;padding:60px 20px;text-align:center;}
-.hero h1{font-size:2.5em;} 
-.hero p{margin:20px 0;font-size:1.2em;}
-.hero button{padding:15px 25px;font-size:1em;background:white;color:#ff6b6b;border:none;border-radius:5px;font-weight:bold;}
+  /* Header */
+  header{background:linear-gradient(90deg, #ff9a9e, #fad0c4);padding:20px 0;position:sticky;top:0;z-index:100;}
+  nav{display:flex;justify-content:space-between;align-items:center;}
+  nav ul{display:flex;list-style:none;}
+  nav li{margin:0 15px;font-weight:600;cursor:pointer;}
+  nav li:hover{opacity:0.8;}
+  .btn-primary{padding:10px 20px;background:#6a11cb;color:white;border-radius:50px;font-weight:700;cursor:pointer;transition:0.3s;}
+  .btn-primary:hover{background:#2575fc;}
 
-/* Secciones */
-.section{padding:60px 20px;text-align:center;}
-.section h2{font-size:2em;margin-bottom:40px;}
-.steps,.retos,.dias{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-.step,.reto,.dia{background:white;padding:20px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-.step h3,.reto h3,.dia h3{margin-bottom:10px;}
-.step{width:250px;} .reto{width:300px;text-align:center;} .dia{width:120px;}
-.reto img{width:100%;border-radius:10px;margin-bottom:10px;}
-.completed{background:#6ab04c;color:white;}
+  /* Hero */
+  .hero{height:90vh;background:url('https://via.placeholder.com/1600x900') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative;}
+  .hero::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
+  .hero-content{position:relative;z-index:2;max-width:800px;}
+  .hero-content h1{font-size:3rem;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,0.5);}
+  .hero-content p{font-size:1.2rem;margin-bottom:30px;}
+  
+  /* Secciones */
+  section{padding:80px 0;position:relative;}
+  section:nth-child(even){background:#f9f9f9;}
 
-/* Panel */
-.progress-bar{background:#ddd;border-radius:20px;width:80%;margin:20px auto;height:25px;overflow:hidden;}
-.progress{background:#ff6b6b;height:100%;width:0%;text-align:center;color:white;line-height:25px;font-weight:bold;}
+  /* Cómo funciona */
+  .steps{display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;margin-top:40px;}
+  .step{flex:1 1 250px;margin:20px;background:white;padding:20px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:0.3s;}
+  .step:hover{transform:translateY(-10px);}
+  .step h3{margin:15px 0;color:#6a11cb;}
 
-/* Comunidad */
-.comunidad{padding:60px 20px;text-align:center;background:#f1f2f6;}
-.comment{background:white;padding:15px;margin:10px auto;width:80%;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.comment strong{display:block;margin-bottom:5px;}
+  /* Retos */
+  .retos{display:flex;flex-wrap:wrap;justify-content:space-around;}
+  .reto-card{flex:1 1 300px;margin:20px;background:white;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:0.3s;cursor:pointer;position:relative;}
+  .reto-card img{width:100%;height:200px;object-fit:cover;}
+  .reto-card h4{margin:15px;padding:0 15px;}
+  .reto-card p{padding:0 15px;margin-bottom:15px;color:#666;}
+  .reto-card:hover{transform:translateY(-10px);}
 
-/* Blog */
-.blog-article{background:white;padding:20px;margin:10px auto;width:80%;border-radius:10px;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.blog-article h3{margin-bottom:10px;}
+  /* Modal */
+  .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:1000;}
+  .modal-content{background:white;padding:30px;border-radius:15px;max-width:700px;width:90%;position:relative;}
+  .modal-close{position:absolute;top:15px;right:20px;font-size:1.5rem;cursor:pointer;}
+  .modal-content h3{color:#6a11cb;margin-bottom:15px;}
+  .modal-content p{margin-bottom:10px;}
+  .modal-content .btn-primary{margin-top:15px;display:inline-block;}
 
-/* Footer */
-footer{background:#2f3640;color:white;padding:40px 20px;text-align:center;}
-footer a{color:white;margin:0 10px;}
-footer input[type="email"]{padding:10px;width:250px;border:none;border-radius:5px;margin-right:5px;}
-footer input[type="submit"]{padding:10px 20px;border:none;border-radius:5px;background:#ff6b6b;color:white;font-weight:bold;}
+  /* Panel 21 días */
+  .panel{display:flex;flex-wrap:wrap;justify-content:center;}
+  .dia-card{flex:1 1 120px;margin:15px;background:#6a11cb;color:white;height:120px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;border-radius:15px;cursor:pointer;transition:0.3s;position:relative;}
+  .dia-card.completed{background:#2575fc;}
+  .progress-bar{height:20px;background:#ddd;border-radius:10px;overflow:hidden;margin:20px 0;}
+  .progress-bar-inner{height:100%;width:0;background:#6a11cb;border-radius:10px;transition:0.5s;}
 
-/* Responsive */
-@media(max-width:768px){.steps,.retos,.dias{flex-direction:column;align-items:center;}}
+  /* Slider testimonios */
+  .slider{display:flex;overflow-x:auto;scroll-behavior:smooth;margin-top:20px;}
+  .slide{flex:0 0 300px;margin-right:20px;background:white;padding:20px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);}
+  .slide img{width:60px;height:60px;border-radius:50%;margin-bottom:10px;}
+  .slide p{color:#555;font-size:0.9rem;}
+
+  /* Footer */
+  footer{background:#6a11cb;color:white;padding:50px 0;text-align:center;}
+  footer a{color:white;margin:0 10px;font-weight:600;}
+  footer input[type="email"]{padding:10px;border-radius:50px;border:none;width:250px;margin-right:10px;}
+  footer button{padding:10px 20px;border-radius:50px;border:none;background:#ff9a9e;color:white;font-weight:700;cursor:pointer;}
+  
 </style>
 </head>
 <body>
 
-<!-- Header -->
 <header>
-<nav>
-<a href="#hero">Inicio</a>
-<a href="#retos">Retos</a>
-<a href="#panel">Mi Panel</a>
-<a href="#comunidad">Comunidad</a>
-<a href="#blog">Blog</a>
-<a href="#tienda">Tienda</a>
-<a href="#contacto">Contacto</a>
-</nav>
+  <div class="container">
+    <nav>
+      <div class="logo"><strong>Reto21Días</strong></div>
+      <ul>
+        <li onclick="scrollToSection('hero')">Inicio</li>
+        <li onclick="scrollToSection('retos')">Retos</li>
+        <li onclick="scrollToSection('panel')">Panel 21 Días</li>
+        <li onclick="scrollToSection('comunidad')">Comunidad</li>
+        <li onclick="scrollToSection('blog')">Blog</li>
+        <li onclick="scrollToSection('contacto')">Contacto</li>
+      </ul>
+      <div class="btn-primary" onclick="scrollToSection('retos')">✨ Únete a tu primer reto</div>
+    </nav>
+  </div>
 </header>
 
-<!-- Hero -->
 <section class="hero" id="hero">
-<h1>Transforma tu vida en solo 21 días</h1>
-<p>Empieza hoy, paso a paso, y alcanza tus metas.</p>
-<button onclick="document.getElementById('retos').scrollIntoView({behavior:'smooth'})">✨ Empezar mi primer reto</button>
+  <div class="hero-content">
+    <h1>Transforma tu vida en 21 días</h1>
+    <p>Recibe apoyo diario, ejercicios, PDFs y motivación para lograr tus objetivos.</p>
+    <div class="btn-primary" onclick="scrollToSection('retos')">Empezar mi primer reto →</div>
+  </div>
 </section>
 
-<!-- Cómo funciona -->
-<section class="section">
-<h2>Cómo funciona</h2>
-<div class="steps">
-<div class="step">
-<h3>1️⃣ Elige tu reto</h3>
-<p>Selecciona el reto que más se adapte a tus objetivos.</p>
-</div>
-<div class="step">
-<h3>2️⃣ Sigue la guía diaria</h3>
-<p>Recibe ejercicios, videos y motivación cada día.</p>
-</div>
-<div class="step">
-<h3>3️⃣ Logra tu cambio en 21 días</h3>
-<p>Marca tus progresos y recibe medallas por tus logros.</p>
-</div>
-</div>
+<section id="como-funciona">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Cómo funciona</h2>
+    <div class="steps">
+      <div class="step">
+        <h3>1️⃣ Elige tu reto</h3>
+        <p>Selecciona el reto que quieras realizar y descubre tu camino.</p>
+      </div>
+      <div class="step">
+        <h3>2️⃣ Recibe guía diaria</h3>
+        <p>Emails, PDFs, videos y motivación diaria durante 21 días.</p>
+      </div>
+      <div class="step">
+        <h3>3️⃣ Logra tu cambio</h3>
+        <p>Cumple cada día y desbloquea medallas y premios digitales.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Retos -->
-<section class="section" id="retos">
-<h2>Retos Destacados</h2>
-<div class="retos">
-
-<div class="reto">
-<img src="https://via.placeholder.com/300x180?text=Amor+Propio" alt="Reto Amor Propio">
-<h3>Reto Amor Propio 21 días</h3>
-<p>Mejora tu autoestima y hábitos diarios. Incluye PDFs, audios y comunidad privada.</p>
-<button onclick="openPayPal('Reto Amor Propio 21 días', 9.99)">Unirme</button>
-</div>
-
-<div class="reto">
-<img src="https://via.placeholder.com/300x180?text=Gratitud" alt="Reto Gratitud">
-<h3>Reto Gratitud 21 días</h3>
-<p>Desarrolla el hábito de la gratitud diariamente. Incluye worksheets, mini audios y grupo de soporte.</p>
-<button onclick="openPayPal('Reto Gratitud 21 días', 9.99)">Unirme</button>
-</div>
-
-</div>
+<section id="retos">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Retos destacados</h2>
+    <div class="retos">
+      <div class="reto-card" onclick="openRetoModal('Reto Gratitud 🌸')">
+        <img src="https://via.placeholder.com/400x200" alt="Reto Gratitud">
+        <h4>Reto 21 días de gratitud 🌸</h4>
+        <p>Aprende a enfocarte en lo positivo y agradecer cada día.</p>
+      </div>
+      <div class="reto-card" onclick="openRetoModal('Reto Sin Azúcar 🍎')">
+        <img src="https://via.placeholder.com/400x200" alt="Reto Sin Azúcar">
+        <h4>Reto 21 días sin azúcar 🍎</h4>
+        <p>Desintoxica tu cuerpo y mejora tu energía eliminando azúcares.</p>
+      </div>
+      <div class="reto-card" onclick="openRetoModal('Reto Orden 🧺')">
+        <img src="https://via.placeholder.com/400x200" alt="Reto Orden">
+        <h4>Reto 21 días de orden y limpieza 🧺</h4>
+        <p>Organiza tu espacio y tu mente en 21 días.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Panel 21 días -->
-<section class="section panel" id="panel">
-<h2>Mi Panel 21 Días</h2>
-<div class="progress-bar">
-<div class="progress" id="progress">0%</div>
+<!-- Modal de Reto -->
+<div class="modal" id="retoModal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeRetoModal()">&times;</span>
+    <h3 id="retoTitle">Reto</h3>
+    <p><strong>Qué incluye:</strong> PDFs, audios, videos, checklist diario.</p>
+    <p><strong>Día 1 de ejemplo:</strong> Hoy escribe 3 cosas por las que estás agradecida.</p>
+    <p><strong>Bonus:</strong> Plantilla descargable + medalla digital.</p>
+    <button class="btn-primary" onclick="openPayPal('Reto 21 Días', 9.99)">Unirme por 9,99 €</button>
+  </div>
 </div>
-<div class="dias" id="dias"></div>
+
+<section id="panel">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Panel 21 Días</h2>
+    <div class="progress-bar"><div class="progress-bar-inner" id="progressBar"></div></div>
+    <div class="panel" id="diasPanel">
+      <!-- Días generados por JS -->
+    </div>
+  </div>
 </section>
 
-<!-- Comunidad -->
-<section class="section comunidad" id="comunidad">
-<h2>Comunidad</h2>
-<div class="comment"><strong>Laura M.:</strong> “¡Este reto me cambió la manera de organizar mis días!”</div>
-<div class="comment"><strong>Miguel P.:</strong> “Nunca pensé que 21 días podían tener tanto impacto.”</div>
-<div class="comment"><strong>Ana R.:</strong> “Las medallas me motivan a no saltarme ningún día.”</div>
+<section id="comunidad">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Comunidad</h2>
+    <div class="slider" id="sliderTestimonios">
+      <div class="slide">
+        <img src="https://via.placeholder.com/60" alt="Avatar">
+        <h4>Laura G.</h4>
+        <p>Gracias a este reto he aprendido a disfrutar de cada momento. 🌸</p>
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/60" alt="Avatar">
+        <h4>Pedro M.</h4>
+        <p>¡21 días y mi energía ha cambiado completamente! 💪</p>
+      </div>
+      <div class="slide">
+        <img src="https://via.placeholder.com/60" alt="Avatar">
+        <h4>Ana R.</h4>
+        <p>Los ejercicios diarios me ayudan a mantenerme positiva cada día. ✨</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Blog -->
-<section class="section blog" id="blog">
-<h2>Blog</h2>
-<div class="blog-article">
-<h3>Cómo mantener la motivación durante 21 días</h3>
-<p>Descubre estrategias para no abandonar tu reto y mantener la disciplina diaria.</p>
-<a href="#">Leer más</a>
-</div>
-<div class="blog-article">
-<h3>Los hábitos que cambian tu vida</h3>
-<p>Pequeños cambios diarios que generan resultados extraordinarios en solo 3 semanas.</p>
-<a href="#">Leer más</a>
-</div>
+<section id="blog">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Blog</h2>
+    <div class="retos">
+      <div class="reto-card">
+        <h4>Cómo mantener la motivación durante 21 días</h4>
+        <p>Consejos y hábitos para no rendirte y disfrutar del proceso.</p>
+      </div>
+      <div class="reto-card">
+        <h4>Los hábitos que cambian tu vida</h4>
+        <p>Pequeños cambios diarios que generan grandes resultados.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- Tienda -->
-<section class="section blog" id="tienda">
-<h2>Tienda de Descargables</h2>
-<div class="retos">
-<div class="reto">
-<img src="https://via.placeholder.com/300x180?text=Ebook+Gratitud" alt="Ebook Gratitud">
-<h3>Ebook Gratitud</h3>
-<p>Ejercicios y plantillas para 21 días de gratitud. PDF descargable.</p>
-<button onclick="openPayPal('Ebook Gratitud', 4.99)">Comprar</button>
-</div>
-</div>
+<section id="contacto">
+  <div class="container">
+    <h2 style="text-align:center;color:#6a11cb;">Contacto</h2>
+    <p style="text-align:center;">Escríbenos y resolveremos tus dudas rápidamente.</p>
+    <form style="max-width:500px;margin:0 auto;text-align:center;">
+      <input type="text" placeholder="Nombre" required><br><br>
+      <input type="email" placeholder="Email" required><br><br>
+      <textarea placeholder="Mensaje" rows="5" required style="width:100%;padding:10px;border-radius:10px;"></textarea><br><br>
+      <button class="btn-primary" type="submit">Enviar</button>
+    </form>
+  </div>
 </section>
 
-<!-- Footer -->
-<footer id="contacto">
-<h2>Suscríbete a nuestro boletín</h2>
-<form onsubmit="alert('¡Gracias por suscribirte!'); return false;">
-<input type="email" placeholder="Tu email" required>
-<input type="submit" value="Suscribirme">
-</form>
-<p>Síguenos en redes sociales:</p>
-<a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">TikTok</a>
-<p>Testimonio destacado: “¡Gracias a Reto21Días mi vida cambió en solo 3 semanas!” – Carla R.</p>
+<footer>
+  <div class="container">
+    <p>Suscríbete para recibir motivación diaria y bonus exclusivos:</p>
+    <input type="email" placeholder="Tu email"><button>Suscribirme</button>
+    <p style="margin-top:20px;">© 2025 Reto21Días - Todos los derechos reservados</p>
+    <p>Síguenos: 
+      <a href="#">Instagram</a> | 
+      <a href="#">TikTok</a> | 
+      <a href="#">YouTube</a>
+    </p>
+  </div>
 </footer>
 
-<!-- PayPal Form -->
+<!-- Formulario PayPal oculto -->
 <form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:none;">
 <input type="hidden" name="cmd" value="_xclick">
 <input type="hidden" name="business" value="lectoramazondkp@gmail.com">
@@ -184,34 +247,37 @@ footer input[type="submit"]{padding:10px 20px;border:none;border-radius:5px;back
 </form>
 
 <script>
-// Generar 21 días en el panel
-const diasContainer = document.getElementById('dias');
-const progressBar = document.getElementById('progress');
-let progreso = 0;
-for(let i=1;i<=21;i++){
-  const div = document.createElement('div');
-  div.className='dia';
-  div.id='dia'+i;
-  div.innerHTML=`<h3>Día ${i}</h3><p>Contenido del día ${i}</p><button onclick="marcarDia(${i})">Marcar completado</button>`;
-  diasContainer.appendChild(div);
-}
-function marcarDia(num){
-  const dia = document.getElementById('dia'+num);
-  if(dia.classList.contains('completed')) return;
-  dia.classList.add('completed');
-  progreso++;
-  progressBar.style.width = ((progreso/21)*100).toFixed(0)+'%';
-  progressBar.textContent = ((progreso/21)*100).toFixed(0)+'%';
-}
+  // Scroll suave
+  function scrollToSection(id){
+    document.getElementById(id).scrollIntoView({behavior:'smooth'});
+  }
 
-// Función para abrir PayPal Business
-function openPayPal(item, price){
-  if(!item || !price) return;
-  document.getElementById('item_name').value = item;
-  document.getElementById('item_amount').value = price.toFixed(2);
-  document.getElementById('paypalForm').submit();
-}
-</script>
+  // Modal retos
+  function openRetoModal(title){
+    document.getElementById('retoTitle').innerText = title;
+    document.getElementById('retoModal').style.display = 'flex';
+  }
+  function closeRetoModal(){
+    document.getElementById('retoModal').style.display = 'none';
+  }
 
-</body>
-</html>
+  // Panel 21 días
+  const panel = document.getElementById('diasPanel');
+  const progressBar = document.getElementById('progressBar');
+  let completedDays = 0;
+  for(let i=1;i<=21;i++){
+    const div = document.createElement('div');
+    div.className='dia-card';
+    div.innerText='Día '+i;
+    div.addEventListener('click',()=>{
+      if(!div.classList.contains('completed')){
+        div.classList.add('completed');
+        completedDays++;
+        updateProgress();
+        alert('¡Día '+i+' completado! 🎉 Medalla desbloqueada.');
+      }
+    });
+    panel.appendChild(div);
+  }
+  function updateProgress(){
+    const
