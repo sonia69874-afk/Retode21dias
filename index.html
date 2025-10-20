@@ -1,364 +1,194 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Respirahoy — Relajación (Zen Night)</title>
-<meta name="description" content="Respirahoy — sesiones de calma personalizadas. Prueba gratis, paga solo al final si deseas la versión completa.">
-<meta name="theme-color" content="#0b1518">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reto21Días | Transforma tu vida paso a paso</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg:#050609;
-    --panel:#0b1518;
-    --card:#0f1b1d;
-    --muted:#9aa6a8;
-    --accent:#6dd3d1;
-    --accent-2:#a0fff6;
-    --glass: rgba(255,255,255,0.03);
-    --radius:14px; --maxw:1100px;
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:linear-gradient(180deg,#020405,var(--panel));color:#d8eef0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:28px}
-  header{display:flex;align-items:center;gap:12px}
-  .brand{display:flex;align-items:center;gap:10px}
-  .mark{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;font-weight:800;color:#021213}
-  nav{margin-left:auto;display:flex;gap:12px}
-  nav a{color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:10px}
-  .hero{display:grid;grid-template-columns:1fr 420px;gap:22px;align-items:start;margin-top:22px}
-  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:var(--radius);padding:20px;border:1px solid rgba(255,255,255,0.03);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
-  h1{margin:0;font-size:28px;color:#bff5f2}
-  .lead{color:var(--muted);margin-top:8px}
-  .moods{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-  .mood{background:transparent;border:1px solid rgba(160,255,246,0.06);padding:10px 14px;border-radius:12px;color:var(--accent-2);cursor:pointer;transition:transform .15s, box-shadow .15s}
-  .mood.selected{transform:translateY(-6px);box-shadow:0 12px 30px rgba(6,28,30,0.6);border-color:rgba(160,255,246,0.18)}
-  .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-  .btn{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#021213;border:none;padding:12px 16px;border-radius:12px;cursor:pointer;font-weight:700;box-shadow:0 10px 28px rgba(6,28,30,0.6)}
-  .btn.ghost{background:transparent;border:1px solid rgba(160,255,246,0.06);color:var(--accent-2)}
-  .preview{display:flex;flex-direction:column;align-items:center;gap:12px}
-  .screen{width:360px;height:640px;border-radius:18px;background:linear-gradient(180deg,#071213,#091717);padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;border:1px solid rgba(255,255,255,0.02)}
-  .visual{width:180px;height:180px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(108,211,206,0.08), transparent 40%);display:flex;align-items:center;justify-content:center;transition:transform 1.6s}
-  .session-title{font-weight:700;margin-top:12px;color:#adfff7}
-  .phrase{font-style:italic;color:var(--muted);margin-top:12px;min-height:56px;text-align:center;padding:0 10px}
-  .player{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:auto;padding-top:10px}
-  .controls{display:flex;gap:8px;align-items:center}
-  .time{color:var(--muted);font-weight:700}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}
-  .small{font-size:13px;color:var(--muted)}
-  footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center;padding:18px}
-  .card-map{margin-top:18px}
-  /* testimonials */
-  #testiTrack{display:flex;gap:12px;align-items:stretch}
-  .test{min-width:280px;padding:14px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.02)}
-  /* modal */
-  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;padding:20px;z-index:400;display:none}
-  .modal-card{background:linear-gradient(180deg,#071414,#071616);padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);text-align:center}
-  @media(max-width:980px){
-    .hero{grid-template-columns:1fr;gap:16px}
-    .screen{width:300px;height:560px}
-    .grid{grid-template-columns:1fr}
-  }
+body { font-family:'Poppins',sans-serif; margin:0; background:#fafafa; color:#333; line-height:1.6; }
+header{ background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); position:sticky; top:0; z-index:100; }
+header h1{ color:#6a5acd; font-weight:700; }
+nav a{ margin:0 12px; text-decoration:none; color:#333; font-weight:500; }
+nav a:hover{ color:#6a5acd; }
+.hero{ text-align:center; padding:80px 20px; background:linear-gradient(120deg,#e8e4ff,#fff); }
+.hero h2{ font-size:2.4em; color:#4b3ca7; margin-bottom:15px; }
+.hero p{ max-width:600px; margin:10px auto 30px; color:#555; }
+.hero a{ background-color:#6a5acd; color:white; padding:14px 28px; border-radius:8px; text-decoration:none; font-weight:bold; transition:background .3s; }
+.hero a:hover{ background-color:#5842b8; }
+.section{ padding:70px 20px; text-align:center; max-width:1100px; margin:auto; }
+.section h2{ color:#4b3ca7; font-size:2em; margin-bottom:10px; }
+.cards{ display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-top:30px; }
+.card{ background:white; width:300px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); overflow:hidden; transition:transform .3s; }
+.card:hover{ transform:translateY(-5px); }
+.card img{ width:100%; height:200px; object-fit:cover; }
+.card h3{ color:#4b3ca7; margin:15px 0 10px; }
+.card p{ padding:0 15px; color:#555; min-height:70px; }
+.card a{ display:inline-block; margin:15px 0 20px; background-color:#6a5acd; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; }
+.card a:hover{ background-color:#5842b8; }
+.testimonios{ background-color:#f4f3ff; padding:60px 20px; }
+.testimonios h2{ color:#4b3ca7; }
+.testi-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-top:30px; }
+.testi{ background:white; padding:20px; width:280px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05); font-style:italic; }
+.testi img{ width:50px; height:50px; border-radius:50%; margin-bottom:10px; }
+.reto{ background:#fff; padding:60px 20px; margin-top:40px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); max-width:800px; margin-left:auto; margin-right:auto; text-align:left;}
+.reto h3{ color:#6a5acd; margin-bottom:15px; }
+.reto ul{ padding-left:20px; }
+.reto li{ margin-bottom:10px; cursor:pointer; }
+.reto li.done{ text-decoration:line-through; color:green; }
+footer{ background:#4b3ca7; color:white; text-align:center; padding:40px 10px; margin-top:60px; }
+.blog, .tienda, .comunidad, .panel{ margin-top:50px; padding:50px 20px; background:#f9f9ff; border-radius:12px; max-width:1000px; margin-left:auto; margin-right:auto; text-align:left; }
+.blog h3,.tienda h3,.comunidad h3,.panel h3{ color:#6a5acd; margin-bottom:20px; }
+ul li{ margin-bottom:10px; }
+.button{ background-color:#6a5acd; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; display:inline-block; margin-top:10px; }
+.button:hover{ background-color:#5842b8; }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">
-        <div class="mark">RH</div>
-        <div style="line-height:1">
-          <div style="font-weight:700;color:#bff5f2">Respirahoy</div>
-          <div style="font-size:12px;color:var(--muted)">Zen Night — Experiencia de calma</div>
-        </div>
-      </div>
-      <nav>
-        <a href="#create">Crear</a>
-        <a href="#mapSection">Mapa</a>
-        <a href="#about">Sobre</a>
-      </nav>
-    </header>
 
-    <main>
-      <section class="hero">
-        <div class="card">
-          <h1>Respirahoy — Tu momento de calma</h1>
-          <p class="lead">Respira. Aquí empieza tu espacio seguro. Sin rastreos, sin nombres, sin localización. Prueba gratis y decide al final si quieres la experiencia completa.</p>
+<header>
+<h1>Reto21Días</h1>
+<nav>
+<a href="#inicio">Inicio</a>
+<a href="#retos">Retos</a>
+<a href="#panel">Mi Panel</a>
+<a href="#comunidad">Comunidad</a>
+<a href="#blog">Blog</a>
+<a href="#tienda">Tienda</a>
+<a href="#contacto">Contacto</a>
+</nav>
+</header>
 
-          <div class="moods" id="moodButtons">
-            <div class="mood" data-mood="ansiedad">Ansiedad</div>
-            <div class="mood" data-mood="estres">Estrés</div>
-            <div class="mood" data-mood="tristeza">Tristeza</div>
-            <div class="mood" data-mood="cansancio">Cansancio</div>
-            <div class="mood" data-mood="alegria">Alegría</div>
-            <div class="mood" data-mood="focus">Concentración</div>
-          </div>
+<!-- Hero -->
+<section id="inicio" class="hero">
+<h2>Transforma tu vida en solo 21 días 🌟</h2>
+<p>Pequeños pasos diarios pueden crear grandes cambios. Únete a los retos que ya han ayudado a miles de personas a mejorar su bienestar, mente y hábitos.</p>
+<a href="#retos" class="button">Empezar mi primer reto →</a>
+</section>
 
-          <div class="cta">
-            <button class="btn" id="enterBtn">Comenzar sesión de calma</button>
-            <button class="btn ghost" id="howItWorks">Cómo funciona</button>
-            <span class="small">No pedimos datos. Solo tu momento.</span>
-          </div>
+<!-- Cómo funciona -->
+<section class="section" id="como-funciona">
+<h2>Cómo funciona</h2>
+<p>Solo necesitas 3 pasos para comenzar tu cambio:</p>
+<div class="cards">
+<div class="card"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt=""><h3>1️⃣ Elige tu reto</h3><p>Escoge el área que quieres mejorar: bienestar, amor propio, productividad o salud.</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt=""><h3>2️⃣ Sigue la guía diaria</h3><p>Cada día desbloquea contenido nuevo, ejercicios y mensajes motivadores.</p></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt=""><h3>3️⃣ Transforma tu vida</h3><p>En solo 21 días, sentirás un cambio real en tu energía, enfoque y bienestar.</p></div>
+</div>
+</section>
 
-          <div class="grid" style="margin-top:18px">
-            <div class="card"><h3 style="margin:0;color:#9ff5f0">Sesiones cortas y efectivas</h3><p class="small">Diseñadas para restaurar la calma en minutos.</p></div>
-            <div class="card"><h3 style="margin:0;color:#9ff5f0">Privacidad total</h3><p class="small">Sin nombre, sin correo, sin seguimiento.</p></div>
-            <div class="card"><h3 style="margin:0;color:#9ff5f0">Pago solo al final</h3><p class="small">Sin interrupciones ni anuncios al comenzar.</p></div>
-          </div>
-        </div>
+<!-- Retos destacados -->
+<section id="retos" class="section">
+<h2>Retos destacados</h2>
+<div class="cards">
+<div class="card"><img src="https://images.unsplash.com/photo-1513569771920-c9e1d31714af" alt=""><h3>Reto Amor Propio 💗</h3><p>21 días para reconectar contigo misma y aumentar tu autoestima.</p><a href="#panel" class="button">Unirme</a></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt=""><h3>Reto Productividad 🗓️</h3><p>Organiza tu tiempo y logra tus metas en 21 días.</p><a href="#panel" class="button">Unirme</a></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><h3>Reto Calma Mental 🧘‍♀️</h3><p>Libérate del estrés y mejora tu concentración.</p><a href="#panel" class="button">Unirme</a></div>
+</div>
+</section>
 
-        <div class="preview card">
-          <div class="screen" role="application" aria-label="Preview app screen">
-            <div id="visual" class="visual"></div>
-            <div class="session-title" id="sessionTitle">Tu sesión — Respirahoy</div>
-            <div class="phrase" id="phrase">Pulsa <strong>Comenzar sesión de calma</strong> para iniciar (audio inicia tras tu interacción).</div>
+<!-- Panel Personal / Progreso -->
+<section id="panel" class="panel">
+<h3>Mi Panel 21 Días: Reto Amor Propio 💗</h3>
+<p>Marca los días completados:</p>
+<ul id="days-list">
+<li data-day="1">Día 1: Escribe 3 cosas que amas de ti misma.</li>
+<li data-day="2">Día 2: Haz una caminata de 20 minutos reflexionando sobre tus logros.</li>
+<li data-day="3">Día 3: Dedica 10 minutos a meditar y respirar conscientemente.</li>
+<li data-day="4">Día 4: Escribe una carta de agradecimiento a ti misma.</li>
+<li data-day="5">Día 5: Haz algo que te haga feliz sin excusas.</li>
+<li data-day="6">Día 6: Desconéctate de redes sociales por 1 hora y observa tus pensamientos.</li>
+<li data-day="7">Día 7: Crea un espacio bonito en tu habitación o lugar de trabajo.</li>
+<li data-day="8">Día 8: Haz un acto de bondad hacia alguien más.</li>
+<li data-day="9">Día 9: Escribe tus metas personales para este mes.</li>
+<li data-day="10">Día 10: Haz una rutina de cuidado personal de 30 minutos.</li>
+<li data-day="11">Día 11: Reflexiona sobre tus miedos y cómo superarlos.</li>
+<li data-day="12">Día 12: Haz un collage de cosas que te inspiran.</li>
+<li data-day="13">Día 13: Revisa tus logros desde el día 1.</li>
+<li data-day="14">Día 14: Haz ejercicio que disfrutes por 20 minutos.</li>
+<li data-day="15">Día 15: Prueba un nuevo hobby o actividad creativa.</li>
+<li data-day="16">Día 16: Escribe afirmaciones positivas y repítelas.</li>
+<li data-day="17">Día 17: Dedica tiempo a una persona que te haga sentir bien.</li>
+<li data-day="18">Día 18: Haz un detox digital por 2 horas.</li>
+<li data-day="19">Día 19: Escucha música que te motive o relaje.</li>
+<li data-day="20">Día 20: Visualiza tu yo ideal y escribe cómo se siente.</li>
+<li data-day="21">Día 21: Celebra tu progreso y planea tu siguiente reto. 🏅</li>
+</ul>
+<p id="medal" style="color:green;font-weight:bold;"></p>
+</section>
 
-            <div class="player">
-              <div class="controls">
-                <button class="btn" id="playPause" disabled>Reproducir</button>
-                <button class="btn ghost" id="stop" disabled>Detener</button>
-              </div>
-              <div class="time" id="timeLeft">00:00</div>
-            </div>
-          </div>
-          <div style="width:100%;text-align:center;margin-top:12px">
-            <small class="small">Diseño oscuro tipo zen — experiencia premium lista.</small>
-          </div>
-        </div>
-      </section>
+<!-- Comunidad -->
+<section id="comunidad" class="comunidad">
+<h3>Comunidad</h3>
+<p>Comparte tus logros y recibe apoyo de otros participantes.</p>
+<ul>
+<li>Grupo Telegram: [Enlace]</li>
+<li>Grupo Discord: [Enlace]</li>
+<li>Comparte fotos de tus avances</li>
+<li>Comenta y apoya a otros miembros</li>
+</ul>
+</section>
 
-      <section id="create" style="margin-top:18px">
-        <div class="card">
-          <h2 style="margin-top:0">Personaliza tu sesión</h2>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-            <label style="flex:1;color:var(--muted)">Usuario (opcional)<input id="userName" placeholder="usuario" style="width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#d8eef0;margin-top:6px"></label>
-            <label style="color:var(--muted)">Duración
-              <select id="duration" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#d8eef0">
-                <option>3</option><option>5</option><option selected>10</option><option>15</option><option>20</option>
-              </select>
-            </label>
-            <label style="color:var(--muted)">Guía
-              <select id="voice" style="padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#d8eef0">
-                <option value="female">Femenina suave</option>
-                <option value="male">Masculina cálida</option>
-                <option value="none">Solo sonido</option>
-              </select>
-            </label>
-          </div>
+<!-- Blog -->
+<section id="blog" class="blog">
+<h3>Blog</h3>
+<ul>
+<li><a href="#">Cómo mantener la motivación durante 21 días</a></li>
+<li><a href="#">Los hábitos que cambian tu vida</a></li>
+<li><a href="#">Por qué los pequeños cambios duran más</a></li>
+</ul>
+</section>
 
-          <div style="display:flex;gap:8px;margin-top:14px">
-            <button class="btn" id="startBtn">Comenzar sesión</button>
-            <button class="btn ghost" id="finalizeBtn">Finalizar (ver premium)</button>
-            <button class="btn ghost" id="saveSession">Guardar sesión</button>
-          </div>
+<!-- Tienda -->
+<section id="tienda" class="tienda">
+<h3>Tienda de Descargables</h3>
+<ul>
+<li>Ebook Gratitud 21 días - 5€ <a href="#" class="button">Comprar</a></li>
+<li>Planificador Saludable - 9€ <a href="#" class="button">Comprar</a></li>
+<li>Plantilla Hábitos - 7€ <a href="#" class="button">Comprar</a></li>
+</ul>
+</section>
 
-          <div style="margin-top:14px">
-            <h4 style="margin:0 0 8px 0">Sesiones guardadas</h4>
-            <div id="savedList" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-            <small class="small">Se guardan localmente en tu navegador (privado).</small>
-          </div>
-        </div>
-      </section>
+<!-- Contacto -->
+<section id="contacto" class="section">
+<h2>Contacto / Soporte</h2>
+<p>Escríbenos cualquier duda o consulta:</p>
+<form>
+<input type="text" placeholder="Nombre" required style="padding:8px;margin:5px;width:200px;">
+<input type="email" placeholder="Correo" required style="padding:8px;margin:5px;width:200px;">
+<textarea placeholder="Mensaje" required style="padding:8px;margin:5px;width:400px;height:100px;"></textarea><br>
+<button type="submit" class="button">Enviar</button>
+</form>
+<p>También nos puedes encontrar en redes sociales: Instagram | TikTok | Facebook</p>
+</section>
 
-      <!-- MAP (APPEARS AS A "DESCANSO" SECTION) -->
-      <section id="mapSection" class="card-map">
-        <div class="card">
-          <h2 style="margin-top:0">Espacios para relajarte — Las Palmas (sugeridos)</h2>
-          <p class="small">Mapa de referencia centrado en Las Palmas de Gran Canaria. No recogemos ni usamos tu ubicación.</p>
-          <!-- Static embed map (no geolocation, no API key) -->
-          <div style="border-radius:12px;overflow:hidden;margin-top:12px">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12096.47986889136!2d-15.437986!3d28.123546!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjjCsDA3JzM1LjUiTiAxNcKwMjYnMjkuNiJX!5e0!3m2!1ses!2ses!4v0000000000000"
-              width="100%" height="420" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-          </div>
-
-          <div style="margin-top:12px">
-            <p class="small">Sugerencias: Parque de San Telmo, Jardín Botánico Viera y Clavijo, centros de yoga locales y playas tranquilas.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials (automatic carousel) -->
-      <section id="testimonialsSection" style="margin-top:18px">
-        <div class="card">
-          <h2 style="margin-top:0">Testimonios</h2>
-          <div style="overflow:hidden">
-            <div id="testiTrack" style="display:flex;gap:12px;transition:transform .9s ease"></div>
-          </div>
-        </div>
-      </section>
-
-      <section id="about" style="margin-top:18px">
-        <div class="card">
-          <h2 style="margin-top:0">Sobre Respirahoy</h2>
-          <p class="small">Una experiencia creada para llevarte a la calma mediante sonidos generados en el navegador, frases de apoyo y visuales respiratorios. Privacidad y simplicidad ante todo.</p>
-        </div>
-      </section>
-
-    </main>
-
-    <footer>
-      © Respirahoy — Versión Zen Night (Demo)
-    </footer>
-  </div>
-
-  <!-- final modal -->
-  <div class="modal" id="finalModal" aria-hidden="true">
-    <div class="modal-card">
-      <h3>Tu calma es tuya</h3>
-      <p id="finalText" style="font-size:1.05em">Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes.</p>
-      <div style="display:flex;gap:10px;justify-content:center;margin-top:14px">
-        <button class="btn" id="premiumBtn">Continuar experiencia completa 🌙 (Premium)</button>
-        <button class="btn ghost" id="closeFinal">Volver</button>
-      </div>
-    </div>
-  </div>
+<footer>
+<p>© 2025 Reto21Días.com | Creando hábitos que transforman ✨</p>
+</footer>
 
 <script>
-/* RespiraHoy — Zen Night: no geolocation, audio on user click, session flow, testimonials carousel auto, local saves */
-(() => {
-  const $ = s => document.querySelector(s);
-  const $$ = s => Array.from(document.querySelectorAll(s));
+// Guardar progreso de los días en localStorage
+const daysList = document.getElementById('days-list');
+const medal = document.getElementById('medal');
+const storedDays = JSON.parse(localStorage.getItem('reto21dias')) || [];
 
-  // Elements
-  const enterBtn = $('#enterBtn');
-  const startBtn = $('#startBtn');
-  const startQuick = $('#startQuick');
-  const playPause = $('#playPause');
-  const stopBtn = $('#stop');
-  const phraseEl = $('#phrase');
-  const visual = $('#visual');
-  const sessionTitle = $('#sessionTitle');
-  const timeLeft = $('#timeLeft');
-  const finalizeBtn = $('#finalizeBtn');
-  const finalModal = $('#finalModal');
-  const premiumBtn = $('#premiumBtn');
-  const closeFinal = $('#closeFinal');
-  const moodButtons = $$('#moodButtons .mood');
-  const durationSel = $('#duration');
-  const userName = $('#userName');
-  const savedList = $('#savedList');
-  const saveSessionBtn = $('#saveSession');
-  const testiTrack = $('#testiTrack');
+function updateMedal() {
+  const allDone = [...daysList.children].every(li => li.classList.contains('done'));
+  medal.textContent = allDone ? "¡Felicidades! Has completado los 21 días y ganado tu medalla 🏅" : "";
+}
 
-  // phrase bank (extended)
-  const phrases = {
-    ansiedad:[ "Inhala 4, retén 4, suelta 6. Vuelve a empezar.", "Pequeños pasos, gran calma.", "Tu respiración te acompaña." ],
-    estres:[ "Suelta la tensión en la exhalación.", "Una pausa ahora, claridad después.", "Respira y vuelve a tu centro." ],
-    tristeza:[ "Permítete sentir, y sanar.", "Hoy te sostienes con ternura.", "Las nubes pasan; tú sigues aquí." ],
-    cansancio:[ "Regálate este minuto; no tienes que más.", "Respira y suelta la fatiga.", "Pequeños descansos, gran alivio." ],
-    alegria:[ "Siente la expansión en el pecho.", "Sostén esta calma y disfrútala.", "Respira con gratitud." ],
-    focus:[ "Respira, fija la intención, vuelve.", "Tres respiraciones profundas para centrarte.", "Presente y claro." ]
-  };
-  function pickPhrase(m){ const a=phrases[m]||["Respira, estás bien."]; return a[Math.floor(Math.random()*a.length)]; }
-
-  // audio (WebAudio init on user click)
-  let audioCtx, masterGain, osc1, osc2, noise;
-  function initAudio(){ if(audioCtx) return; audioCtx = new (window.AudioContext || window.webkitAudioContext)(); masterGain = audioCtx.createGain(); masterGain.gain.value = 0; masterGain.connect(audioCtx.destination); }
-  function startAmbient(mood){
-    initAudio(); stopAmbient();
-    const base = {ansiedad:220, estres:190, tristeza:170, cansancio:130, alegria:262, focus:196}[mood]||200;
-    osc1 = audioCtx.createOscillator(); osc1.type='sine'; osc1.frequency.value = base;
-    osc2 = audioCtx.createOscillator(); osc2.type='triangle'; osc2.frequency.value = base*1.5;
-    const g1 = audioCtx.createGain(); g1.gain.value = 0.02;
-    const g2 = audioCtx.createGain(); g2.gain.value = 0.01;
-    osc1.connect(g1); g1.connect(masterGain);
-    osc2.connect(g2); g2.connect(masterGain);
-    osc1.start(); osc2.start();
-    const bufferSize = 2 * (audioCtx.sampleRate||44100);
-    const buf = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const data = buf.getChannelData(0);
-    for(let i=0;i<bufferSize;i++) data[i] = (Math.random()*2-1)*0.12;
-    noise = audioCtx.createBufferSource(); noise.buffer = buf; noise.loop = true;
-    const nf = audioCtx.createBiquadFilter(); nf.type='lowpass'; nf.frequency.value = 700;
-    noise.connect(nf); nf.connect(masterGain);
-    noise.start(0);
-    masterGain.gain.linearRampToValueAtTime(0.11, audioCtx.currentTime + 2);
-  }
-  function stopAmbient(){ if(!audioCtx) return; try{ masterGain.gain.linearRampToValueAtTime(0.0, audioCtx.currentTime+0.4);}catch(e){} try{ if(noise) noise.stop(); }catch(e){} try{ if(osc1) osc1.stop(); if(osc2) osc2.stop(); }catch(e){} noise=null; osc1=null; osc2=null; }
-
-  // visual breathing
-  let breathInterval=null;
-  function startVisual(){ let scale=1; let dir=1; clearInterval(breathInterval); breathInterval=setInterval(()=>{ if(dir>0){ scale+=0.03; if(scale>=1.12) dir=-1; } else { scale-=0.03; if(scale<=0.88) dir=1; } visual.style.transform = `scale(${scale})`; },75); }
-  function stopVisual(){ clearInterval(breathInterval); visual.style.transform='scale(1)'; }
-
-  // session timer
-  let timer=null;
-  function startSession(mood, mins){
-    const name = userName.value ? userName.value : 'Usuario';
-    sessionTitle.textContent = `${name} — ${mood.toUpperCase()} • ${mins} min`;
-    phraseEl.textContent = `"${pickPhrase(mood)}"`;
-    startAmbient(mood); startVisual();
-    playPause.disabled=false; stopBtn.disabled=false;
-    let seconds = mins*60; updateTime(seconds);
-    timer = setInterval(()=>{ seconds--; if(seconds<=0){ clearInterval(timer); endSession(); } updateTime(seconds); },1000);
-  }
-  function updateTime(s){ const m = Math.floor(s/60).toString().padStart(2,'0'); const sec = (s%60).toString().padStart(2,'0'); timeLeft.textContent = `${m}:${sec}`; }
-  function endSession(){ stopAmbient(); stopVisual(); playPause.disabled=true; stopBtn.disabled=true; $('#finalText').textContent = "Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes."; finalModal.style.display='flex'; }
-
-  // UI wiring
-  moodButtons.forEach(b=> b.addEventListener('click', ()=>{ moodButtons.forEach(x=>x.classList.remove('selected')); b.classList.add('selected'); phraseEl.textContent = `"${pickPhrase(b.dataset.mood)}"`; }));
-  enterBtn.addEventListener('click', ()=>{ // first user interaction: we only init audio here
-    initAudio(); // show a gentle welcome and set a selected mood if none
-    const sel = document.querySelector('#moodButtons .mood.selected') || document.querySelector('#moodButtons .mood');
-    if(sel) sel.classList.add('selected');
-    phraseEl.textContent = "Sesión lista. Pulsa 'Comenzar sesión' para iniciar.";
-    // enable start button
-    $('#startBtn').disabled = false;
-    // small focus
-    $('html,body').scrollTop = 0;
+[...daysList.children].forEach(li => {
+  if(storedDays.includes(li.dataset.day)) li.classList.add('done');
+  li.addEventListener('click', () => {
+    li.classList.toggle('done');
+    const doneDays = [...daysList.children].filter(l => l.classList.contains('done')).map(l => l.dataset.day);
+    localStorage.setItem('reto21dias', JSON.stringify(doneDays));
+    updateMedal();
   });
+});
 
-  // Start button
-  startBtn.addEventListener('click', ()=> {
-    // ensure audio context running (user gesture)
-    if(audioCtx && audioCtx.state==='suspended') audioCtx.resume();
-    const sel = document.querySelector('#moodButtons .mood.selected') || document.querySelector('#moodButtons .mood');
-    const mood = sel ? sel.dataset.mood : 'ansiedad';
-    const mins = parseInt(durationSel.value,10) || 10;
-    startSession(mood, mins);
-  });
-
-  // stop
-  stopBtn.addEventListener('click', ()=>{ if(timer) clearInterval(timer); stopAmbient(); stopVisual(); playPause.disabled=true; stopBtn.disabled=true; timeLeft.textContent='00:00'; });
-
-  // finalize -> open final modal
-  finalizeBtn.addEventListener('click', ()=>{ $('#finalText').textContent = "Tu calma es tuya. Respira. Estás haciendo lo mejor que puedes."; finalModal.style.display='flex'; });
-
-  // premium simulated
-  premiumBtn.addEventListener('click', ()=> {
-    premiumBtn.disabled=true; premiumBtn.textContent='Procesando...';
-    setTimeout(()=>{ premiumBtn.textContent='Gracias — Premium activado 🌙'; alert('Pago simulado: Premium activado. En producción se redirigiría a Stripe/PayPal.'); finalModal.style.display='none'; },1200);
-  });
-  closeFinal.addEventListener('click', ()=> finalModal.style.display='none');
-
-  // sessions localStorage
-  function loadSaved(){ try{ return JSON.parse(localStorage.getItem('rh_saved')||'[]'); }catch(e){ return []; } }
-  function renderSaved(){ const arr = loadSaved(); savedList.innerHTML=''; if(!arr.length){ savedList.innerHTML = '<small class=\"small\">No hay sesiones guardadas</small>'; return; } arr.forEach((s,idx)=>{ const d = document.createElement('div'); d.className='mood'; d.style.cursor='pointer'; d.textContent=`${s.name||'Usuario'} • ${s.mood} • ${s.duration}m`; d.addEventListener('click', ()=>{ durationSel.value = s.duration; moodButtons.forEach(b=>b.classList.remove('selected')); const btn = moodButtons.find(b=>b.dataset.mood===s.mood); if(btn) btn.classList.add('selected'); }); const del = document.createElement('button'); del.textContent='X'; del.style.marginLeft='8px'; del.addEventListener('click',(e)=>{ e.stopPropagation(); arr.splice(idx,1); localStorage.setItem('rh_saved',JSON.stringify(arr)); renderSaved(); }); d.appendChild(del); savedList.appendChild(d); }); }
-  saveSessionBtn.addEventListener('click', ()=> {
-    const sel = document.querySelector('#moodButtons .mood.selected') || document.querySelector('#moodButtons .mood');
-    const mood = sel ? sel.dataset.mood : 'ansiedad';
-    const obj = { name: Usuario.value || 'Usuario', mood, duration: parseInt(durationSel.value,10) };
-    const arr = loadSaved(); arr.unshift(obj); if(arr.length>10) arr.pop(); localStorage.setItem('rh_saved', JSON.stringify(arr)); renderSaved();
-  });
-  renderSaved();
-
-  // Testimonials carousel (auto)
-  const testi = [
-    {name:Sofia', text:'Un antes y un después: en 10 minutos me siento diferente.'},
-    {name:'Raul', text:'Diseño precioso y experiencia real.'},
-    {name:'Sheila', text:'Lo uso antes de dormir. Muy efectivo.'},
-    {name:'Jose', text:'La versión premium me dio audios descargables, genial.'}
-  ];
-  testi.forEach(t=>{ const el = document.createElement('div'); el.className='test'; el.innerHTML = `<strong>${t.name}</strong><p class="small">${t.text}</p>`; testiTrack.appendChild(el); });
-  let tIndex = 0;
-  setInterval(()=>{ tIndex = (tIndex+1) % testi.length; testiTrack.style.transform = `translateX(${tIndex * -300}px)`; }, 4000);
-
-  // small animation on load
-  (function pulse(){ visual.style.transform='scale(1.02)'; setTimeout(()=>visual.style.transform='scale(1)',1200); setTimeout(pulse,2600); })();
-
-  // ensure audio resumes on user gesture
-  document.body.addEventListener('click', ()=>{ if(audioCtx && audioCtx.state==='suspended') audioCtx.resume(); });
-
-})();
+updateMedal();
 </script>
+
 </body>
 </html>
