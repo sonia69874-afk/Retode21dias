@@ -5,17 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reto21Días - Transforma tu vida</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<!-- GSAP para animaciones profesionales -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <style>
-  /* Reset y tipografía */
   *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
-  body{background:#fefefe;color:#333;line-height:1.6;}
+  body{background:#fefefe;color:#333;line-height:1.6;scroll-behavior:smooth;}
   a{text-decoration:none;color:inherit;}
   img{max-width:100%;display:block;}
-
-  /* Contenedor general */
   .container{width:90%;max-width:1200px;margin:0 auto;}
-
-  /* Header */
   header{background:linear-gradient(90deg, #ff9a9e, #fad0c4);padding:20px 0;position:sticky;top:0;z-index:100;}
   nav{display:flex;justify-content:space-between;align-items:center;}
   nav ul{display:flex;list-style:none;}
@@ -23,59 +20,44 @@
   nav li:hover{opacity:0.8;}
   .btn-primary{padding:10px 20px;background:#6a11cb;color:white;border-radius:50px;font-weight:700;cursor:pointer;transition:0.3s;}
   .btn-primary:hover{background:#2575fc;}
-
-  /* Hero */
   .hero{height:90vh;background:url('https://via.placeholder.com/1600x900') center/cover no-repeat;display:flex;align-items:center;justify-content:center;text-align:center;color:white;position:relative;}
   .hero::after{content:"";position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);}
   .hero-content{position:relative;z-index:2;max-width:800px;}
   .hero-content h1{font-size:3rem;margin-bottom:20px;text-shadow:2px 2px 8px rgba(0,0,0,0.5);}
   .hero-content p{font-size:1.2rem;margin-bottom:30px;}
-  
-  /* Secciones */
   section{padding:80px 0;position:relative;}
   section:nth-child(even){background:#f9f9f9;}
-
-  /* Cómo funciona */
   .steps{display:flex;flex-wrap:wrap;justify-content:space-around;text-align:center;margin-top:40px;}
   .step{flex:1 1 250px;margin:20px;background:white;padding:20px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:0.3s;}
   .step:hover{transform:translateY(-10px);}
   .step h3{margin:15px 0;color:#6a11cb;}
-
-  /* Retos */
   .retos{display:flex;flex-wrap:wrap;justify-content:space-around;}
   .reto-card{flex:1 1 300px;margin:20px;background:white;border-radius:15px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1);transition:0.3s;cursor:pointer;position:relative;}
   .reto-card img{width:100%;height:200px;object-fit:cover;}
   .reto-card h4{margin:15px;padding:0 15px;}
   .reto-card p{padding:0 15px;margin-bottom:15px;color:#666;}
   .reto-card:hover{transform:translateY(-10px);}
-
-  /* Modal */
   .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);justify-content:center;align-items:center;z-index:1000;}
   .modal-content{background:white;padding:30px;border-radius:15px;max-width:700px;width:90%;position:relative;}
   .modal-close{position:absolute;top:15px;right:20px;font-size:1.5rem;cursor:pointer;}
   .modal-content h3{color:#6a11cb;margin-bottom:15px;}
   .modal-content p{margin-bottom:10px;}
-  .modal-content .btn-primary{margin-top:15px;display:inline-block;}
-
-  /* Panel 21 días */
   .panel{display:flex;flex-wrap:wrap;justify-content:center;}
   .dia-card{flex:1 1 120px;margin:15px;background:#6a11cb;color:white;height:120px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;border-radius:15px;cursor:pointer;transition:0.3s;position:relative;}
   .dia-card.completed{background:#2575fc;}
   .progress-bar{height:20px;background:#ddd;border-radius:10px;overflow:hidden;margin:20px 0;}
   .progress-bar-inner{height:100%;width:0;background:#6a11cb;border-radius:10px;transition:0.5s;}
-
-  /* Slider testimonios */
   .slider{display:flex;overflow-x:auto;scroll-behavior:smooth;margin-top:20px;}
   .slide{flex:0 0 300px;margin-right:20px;background:white;padding:20px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);}
   .slide img{width:60px;height:60px;border-radius:50%;margin-bottom:10px;}
   .slide p{color:#555;font-size:0.9rem;}
-
-  /* Footer */
   footer{background:#6a11cb;color:white;padding:50px 0;text-align:center;}
   footer a{color:white;margin:0 10px;font-weight:600;}
   footer input[type="email"]{padding:10px;border-radius:50px;border:none;width:250px;margin-right:10px;}
   footer button{padding:10px 20px;border-radius:50px;border:none;background:#ff9a9e;color:white;font-weight:700;cursor:pointer;}
-  
+  /* Confeti */
+  .confetti-piece{position:absolute;width:10px;height:10px;background:yellow;top:0;animation:fall 3s linear forwards;}
+  @keyframes fall{to{transform:translateY(500px) rotate(360deg);opacity:0;}}
 </style>
 </head>
 <body>
@@ -164,120 +146,9 @@
   <div class="container">
     <h2 style="text-align:center;color:#6a11cb;">Panel 21 Días</h2>
     <div class="progress-bar"><div class="progress-bar-inner" id="progressBar"></div></div>
-    <div class="panel" id="diasPanel">
-      <!-- Días generados por JS -->
-    </div>
+    <div class="panel" id="diasPanel"></div>
   </div>
 </section>
 
 <section id="comunidad">
-  <div class="container">
-    <h2 style="text-align:center;color:#6a11cb;">Comunidad</h2>
-    <div class="slider" id="sliderTestimonios">
-      <div class="slide">
-        <img src="https://via.placeholder.com/60" alt="Avatar">
-        <h4>Laura G.</h4>
-        <p>Gracias a este reto he aprendido a disfrutar de cada momento. 🌸</p>
-      </div>
-      <div class="slide">
-        <img src="https://via.placeholder.com/60" alt="Avatar">
-        <h4>Pedro M.</h4>
-        <p>¡21 días y mi energía ha cambiado completamente! 💪</p>
-      </div>
-      <div class="slide">
-        <img src="https://via.placeholder.com/60" alt="Avatar">
-        <h4>Ana R.</h4>
-        <p>Los ejercicios diarios me ayudan a mantenerme positiva cada día. ✨</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="blog">
-  <div class="container">
-    <h2 style="text-align:center;color:#6a11cb;">Blog</h2>
-    <div class="retos">
-      <div class="reto-card">
-        <h4>Cómo mantener la motivación durante 21 días</h4>
-        <p>Consejos y hábitos para no rendirte y disfrutar del proceso.</p>
-      </div>
-      <div class="reto-card">
-        <h4>Los hábitos que cambian tu vida</h4>
-        <p>Pequeños cambios diarios que generan grandes resultados.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="contacto">
-  <div class="container">
-    <h2 style="text-align:center;color:#6a11cb;">Contacto</h2>
-    <p style="text-align:center;">Escríbenos y resolveremos tus dudas rápidamente.</p>
-    <form style="max-width:500px;margin:0 auto;text-align:center;">
-      <input type="text" placeholder="Nombre" required><br><br>
-      <input type="email" placeholder="Email" required><br><br>
-      <textarea placeholder="Mensaje" rows="5" required style="width:100%;padding:10px;border-radius:10px;"></textarea><br><br>
-      <button class="btn-primary" type="submit">Enviar</button>
-    </form>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <p>Suscríbete para recibir motivación diaria y bonus exclusivos:</p>
-    <input type="email" placeholder="Tu email"><button>Suscribirme</button>
-    <p style="margin-top:20px;">© 2025 Reto21Días - Todos los derechos reservados</p>
-    <p>Síguenos: 
-      <a href="#">Instagram</a> | 
-      <a href="#">TikTok</a> | 
-      <a href="#">YouTube</a>
-    </p>
-  </div>
-</footer>
-
-<!-- Formulario PayPal oculto -->
-<form id="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank" style="display:none;">
-<input type="hidden" name="cmd" value="_xclick">
-<input type="hidden" name="business" value="lectoramazondkp@gmail.com">
-<input type="hidden" name="item_name" id="item_name" value="">
-<input type="hidden" name="amount" id="item_amount" value="">
-<input type="hidden" name="currency_code" value="EUR">
-<input type="hidden" name="return" value="https://tusitio.com/gracias.html">
-<input type="hidden" name="cancel_return" value="https://tusitio.com/compra-cancelada.html">
-</form>
-
-<script>
-  // Scroll suave
-  function scrollToSection(id){
-    document.getElementById(id).scrollIntoView({behavior:'smooth'});
-  }
-
-  // Modal retos
-  function openRetoModal(title){
-    document.getElementById('retoTitle').innerText = title;
-    document.getElementById('retoModal').style.display = 'flex';
-  }
-  function closeRetoModal(){
-    document.getElementById('retoModal').style.display = 'none';
-  }
-
-  // Panel 21 días
-  const panel = document.getElementById('diasPanel');
-  const progressBar = document.getElementById('progressBar');
-  let completedDays = 0;
-  for(let i=1;i<=21;i++){
-    const div = document.createElement('div');
-    div.className='dia-card';
-    div.innerText='Día '+i;
-    div.addEventListener('click',()=>{
-      if(!div.classList.contains('completed')){
-        div.classList.add('completed');
-        completedDays++;
-        updateProgress();
-        alert('¡Día '+i+' completado! 🎉 Medalla desbloqueada.');
-      }
-    });
-    panel.appendChild(div);
-  }
-  function updateProgress(){
-    const
+  <div class
