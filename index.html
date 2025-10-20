@@ -3,53 +3,62 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reto21Días | Transforma tu vida paso a paso</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+<title>Reto21Días</title>
 <style>
-body { font-family:'Poppins',sans-serif; margin:0; background:#fafafa; color:#333; line-height:1.6; }
-header{ background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 8px rgba(0,0,0,0.05); position:sticky; top:0; z-index:100; }
-header h1{ color:#6a5acd; font-weight:700; }
-nav a{ margin:0 12px; text-decoration:none; color:#333; font-weight:500; }
-nav a:hover{ color:#6a5acd; }
-.hero{ text-align:center; padding:80px 20px; background:linear-gradient(120deg,#e8e4ff,#fff); }
-.hero h2{ font-size:2.4em; color:#4b3ca7; margin-bottom:15px; }
-.hero p{ max-width:600px; margin:10px auto 30px; color:#555; }
-.hero a{ background-color:#6a5acd; color:white; padding:14px 28px; border-radius:8px; text-decoration:none; font-weight:bold; transition:background .3s; }
-.hero a:hover{ background-color:#5842b8; }
-.section{ padding:70px 20px; text-align:center; max-width:1100px; margin:auto; }
-.section h2{ color:#4b3ca7; font-size:2em; margin-bottom:10px; }
-.cards{ display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-top:30px; }
-.card{ background:white; width:300px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); overflow:hidden; transition:transform .3s; }
-.card:hover{ transform:translateY(-5px); }
-.card img{ width:100%; height:200px; object-fit:cover; }
-.card h3{ color:#4b3ca7; margin:15px 0 10px; }
-.card p{ padding:0 15px; color:#555; min-height:70px; }
-.card a{ display:inline-block; margin:15px 0 20px; background-color:#6a5acd; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; }
-.card a:hover{ background-color:#5842b8; }
-.testimonios{ background-color:#f4f3ff; padding:60px 20px; }
-.testimonios h2{ color:#4b3ca7; }
-.testi-container{ display:flex; flex-wrap:wrap; justify-content:center; gap:25px; margin-top:30px; }
-.testi{ background:white; padding:20px; width:280px; border-radius:10px; box-shadow:0 4px 10px rgba(0,0,0,0.05); font-style:italic; }
-.testi img{ width:50px; height:50px; border-radius:50%; margin-bottom:10px; }
-.reto{ background:#fff; padding:60px 20px; margin-top:40px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,0.05); max-width:800px; margin-left:auto; margin-right:auto; text-align:left;}
-.reto h3{ color:#6a5acd; margin-bottom:15px; }
-.reto ul{ padding-left:20px; }
-.reto li{ margin-bottom:10px; cursor:pointer; }
-.reto li.done{ text-decoration:line-through; color:green; }
-footer{ background:#4b3ca7; color:white; text-align:center; padding:40px 10px; margin-top:60px; }
-.blog, .tienda, .comunidad, .panel{ margin-top:50px; padding:50px 20px; background:#f9f9ff; border-radius:12px; max-width:1000px; margin-left:auto; margin-right:auto; text-align:left; }
-.blog h3,.tienda h3,.comunidad h3,.panel h3{ color:#6a5acd; margin-bottom:20px; }
-ul li{ margin-bottom:10px; }
-.button{ background-color:#6a5acd; color:white; padding:10px 20px; border-radius:6px; text-decoration:none; display:inline-block; margin-top:10px; }
-.button:hover{ background-color:#5842b8; }
+/* ---------- Reset y básicos ---------- */
+body {margin:0; font-family: Arial, sans-serif; background:#f9f9f9; color:#333;}
+a {text-decoration:none; color:#333;}
+button,input[type="submit"]{cursor:pointer;}
+
+/* ---------- Header ---------- */
+header{background:#ff6b6b; color:white; padding:15px 0; text-align:center;}
+nav a{margin:0 15px; color:white; font-weight:bold;}
+
+/* ---------- Hero ---------- */
+.hero{background:#ff9f43; color:white; padding:60px 20px; text-align:center;}
+.hero h1{font-size:2.5em;} .hero p{margin:20px 0; font-size:1.2em;}
+.hero button{padding:15px 25px; font-size:1em; background:white; color:#ff6b6b; border:none; border-radius:5px; font-weight:bold;}
+
+/* ---------- Secciones ---------- */
+.section{padding:60px 20px; text-align:center;}
+.section h2{font-size:2em; margin-bottom:40px;}
+.steps,.retos,.dias{display:flex; flex-wrap:wrap; justify-content:center; gap:20px;}
+.step,.reto,.dia{background:white; padding:20px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+.step h3,.reto h3,.dia h3{margin-bottom:10px;}
+.step{width:250px;} .reto{width:300px; text-align:center;} .dia{width:120px;}
+.reto img{width:100%; border-radius:10px; margin-bottom:10px;}
+.completed{background:#6ab04c; color:white;}
+
+/* ---------- Panel ---------- */
+.progress-bar{background:#ddd; border-radius:20px; width:80%; margin:20px auto; height:25px; overflow:hidden;}
+.progress{background:#ff6b6b; height:100%; width:0%; text-align:center; color:white; line-height:25px; font-weight:bold;}
+
+/* ---------- Comunidad ---------- */
+.comunidad{padding:60px 20px; text-align:center; background:#f1f2f6;}
+.comment{background:white; padding:15px; margin:10px auto; width:80%; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.comment strong{display:block; margin-bottom:5px;}
+
+/* ---------- Blog ---------- */
+.blog{padding:60px 20px; text-align:center;}
+.blog-article{background:white; padding:20px; margin:10px auto; width:80%; border-radius:10px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+.blog-article h3{margin-bottom:10px;}
+
+/* ---------- Footer ---------- */
+footer{background:#2f3640; color:white; padding:40px 20px; text-align:center;}
+footer a{color:white; margin:0 10px;}
+footer input[type="email"]{padding:10px; width:250px; border:none; border-radius:5px; margin-right:5px;}
+footer input[type="submit"]{padding:10px 20px; border:none; border-radius:5px; background:#ff6b6b; color:white; font-weight:bold;}
+
+/* ---------- Responsive ---------- */
+@media(max-width:768px){.steps,.retos,.dias{flex-direction:column; align-items:center;}}
 </style>
 </head>
 <body>
 
+<!-- Header -->
 <header>
-<h1>Reto21Días</h1>
 <nav>
-<a href="#inicio">Inicio</a>
+<a href="#hero">Inicio</a>
 <a href="#retos">Retos</a>
 <a href="#panel">Mi Panel</a>
 <a href="#comunidad">Comunidad</a>
@@ -60,135 +69,141 @@ ul li{ margin-bottom:10px; }
 </header>
 
 <!-- Hero -->
-<section id="inicio" class="hero">
-<h2>Transforma tu vida en solo 21 días 🌟</h2>
-<p>Pequeños pasos diarios pueden crear grandes cambios. Únete a los retos que ya han ayudado a miles de personas a mejorar su bienestar, mente y hábitos.</p>
-<a href="#retos" class="button">Empezar mi primer reto →</a>
+<section class="hero" id="hero">
+<h1>Transforma tu vida en solo 21 días</h1>
+<p>Empieza hoy, paso a paso, y alcanza tus metas.</p>
+<button onclick="document.getElementById('retos').scrollIntoView({behavior:'smooth'})">✨ Empezar mi primer reto</button>
 </section>
 
 <!-- Cómo funciona -->
-<section class="section" id="como-funciona">
+<section class="section">
 <h2>Cómo funciona</h2>
-<p>Solo necesitas 3 pasos para comenzar tu cambio:</p>
-<div class="cards">
-<div class="card"><img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7" alt=""><h3>1️⃣ Elige tu reto</h3><p>Escoge el área que quieres mejorar: bienestar, amor propio, productividad o salud.</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4" alt=""><h3>2️⃣ Sigue la guía diaria</h3><p>Cada día desbloquea contenido nuevo, ejercicios y mensajes motivadores.</p></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d" alt=""><h3>3️⃣ Transforma tu vida</h3><p>En solo 21 días, sentirás un cambio real en tu energía, enfoque y bienestar.</p></div>
+<div class="steps">
+<div class="step">
+<h3>1️⃣ Elige tu reto</h3>
+<p>Selecciona el reto que más se adapte a tus objetivos.</p>
+</div>
+<div class="step">
+<h3>2️⃣ Sigue la guía diaria</h3>
+<p>Recibe ejercicios, videos y motivación cada día.</p>
+</div>
+<div class="step">
+<h3>3️⃣ Logra tu cambio en 21 días</h3>
+<p>Marca tus progresos y recibe medallas por tus logros.</p>
+</div>
 </div>
 </section>
 
-<!-- Retos destacados -->
-<section id="retos" class="section">
-<h2>Retos destacados</h2>
-<div class="cards">
-<div class="card"><img src="https://images.unsplash.com/photo-1513569771920-c9e1d31714af" alt=""><h3>Reto Amor Propio 💗</h3><p>21 días para reconectar contigo misma y aumentar tu autoestima.</p><a href="#panel" class="button">Unirme</a></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe" alt=""><h3>Reto Productividad 🗓️</h3><p>Organiza tu tiempo y logra tus metas en 21 días.</p><a href="#panel" class="button">Unirme</a></div>
-<div class="card"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e" alt=""><h3>Reto Calma Mental 🧘‍♀️</h3><p>Libérate del estrés y mejora tu concentración.</p><a href="#panel" class="button">Unirme</a></div>
+<!-- Retos -->
+<section class="section" id="retos">
+<h2>Retos Destacados</h2>
+<div class="retos">
+
+<div class="reto">
+<img src="https://via.placeholder.com/300x180?text=Amor+Propio" alt="Reto Amor Propio">
+<h3>Reto Amor Propio 21 días</h3>
+<p>Mejora tu autoestima y hábitos diarios.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="lectoramazondkp@gmail.com">
+<input type="hidden" name="item_name" value="Reto Amor Propio 21 días">
+<input type="hidden" name="amount" value="9.99">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="submit" value="Unirme por 9,99€">
+</form>
+</div>
+
+<div class="reto">
+<img src="https://via.placeholder.com/300x180?text=Gratitud" alt="Reto Gratitud">
+<h3>Reto Gratitud 21 días</h3>
+<p>Desarrolla el hábito de la gratitud diariamente.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="lectoramazondkp@gmail.com">
+<input type="hidden" name="item_name" value="Reto Gratitud 21 días">
+<input type="hidden" name="amount" value="9.99">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="submit" value="Unirme por 9,99€">
+</form>
+</div>
+
 </div>
 </section>
 
-<!-- Panel Personal / Progreso -->
-<section id="panel" class="panel">
-<h3>Mi Panel 21 Días: Reto Amor Propio 💗</h3>
-<p>Marca los días completados:</p>
-<ul id="days-list">
-<li data-day="1">Día 1: Escribe 3 cosas que amas de ti misma.</li>
-<li data-day="2">Día 2: Haz una caminata de 20 minutos reflexionando sobre tus logros.</li>
-<li data-day="3">Día 3: Dedica 10 minutos a meditar y respirar conscientemente.</li>
-<li data-day="4">Día 4: Escribe una carta de agradecimiento a ti misma.</li>
-<li data-day="5">Día 5: Haz algo que te haga feliz sin excusas.</li>
-<li data-day="6">Día 6: Desconéctate de redes sociales por 1 hora y observa tus pensamientos.</li>
-<li data-day="7">Día 7: Crea un espacio bonito en tu habitación o lugar de trabajo.</li>
-<li data-day="8">Día 8: Haz un acto de bondad hacia alguien más.</li>
-<li data-day="9">Día 9: Escribe tus metas personales para este mes.</li>
-<li data-day="10">Día 10: Haz una rutina de cuidado personal de 30 minutos.</li>
-<li data-day="11">Día 11: Reflexiona sobre tus miedos y cómo superarlos.</li>
-<li data-day="12">Día 12: Haz un collage de cosas que te inspiran.</li>
-<li data-day="13">Día 13: Revisa tus logros desde el día 1.</li>
-<li data-day="14">Día 14: Haz ejercicio que disfrutes por 20 minutos.</li>
-<li data-day="15">Día 15: Prueba un nuevo hobby o actividad creativa.</li>
-<li data-day="16">Día 16: Escribe afirmaciones positivas y repítelas.</li>
-<li data-day="17">Día 17: Dedica tiempo a una persona que te haga sentir bien.</li>
-<li data-day="18">Día 18: Haz un detox digital por 2 horas.</li>
-<li data-day="19">Día 19: Escucha música que te motive o relaje.</li>
-<li data-day="20">Día 20: Visualiza tu yo ideal y escribe cómo se siente.</li>
-<li data-day="21">Día 21: Celebra tu progreso y planea tu siguiente reto. 🏅</li>
-</ul>
-<p id="medal" style="color:green;font-weight:bold;"></p>
+<!-- Panel 21 días -->
+<section class="section panel" id="panel">
+<h2>Mi Panel 21 Días</h2>
+<div class="progress-bar">
+<div class="progress" id="progress">0%</div>
+</div>
+<div class="dias" id="dias">
+<!-- JS generará los 21 días -->
+</div>
 </section>
 
 <!-- Comunidad -->
-<section id="comunidad" class="comunidad">
-<h3>Comunidad</h3>
-<p>Comparte tus logros y recibe apoyo de otros participantes.</p>
-<ul>
-<li>Grupo Telegram: [Enlace]</li>
-<li>Grupo Discord: [Enlace]</li>
-<li>Comparte fotos de tus avances</li>
-<li>Comenta y apoya a otros miembros</li>
-</ul>
+<section class="section comunidad" id="comunidad">
+<h2>Comunidad</h2>
+<div class="comment"><strong>Laura M.:</strong> “¡Este reto me cambió la manera de organizar mis días!”</div>
+<div class="comment"><strong>Miguel P.:</strong> “Nunca pensé que 21 días podían tener tanto impacto.”</div>
+<div class="comment"><strong>Ana R.:</strong> “Las medallas me motivan a no saltarme ningún día.”</div>
 </section>
 
 <!-- Blog -->
-<section id="blog" class="blog">
-<h3>Blog</h3>
-<ul>
-<li><a href="#">Cómo mantener la motivación durante 21 días</a></li>
-<li><a href="#">Los hábitos que cambian tu vida</a></li>
-<li><a href="#">Por qué los pequeños cambios duran más</a></li>
-</ul>
+<section class="section blog" id="blog">
+<h2>Blog</h2>
+<div class="blog-article">
+<h3>Cómo mantener la motivación durante 21 días</h3>
+<p>Descubre estrategias para no abandonar tu reto y mantener la disciplina diaria.</p>
+<a href="#">Leer más</a>
+</div>
+<div class="blog-article">
+<h3>Los hábitos que cambian tu vida</h3>
+<p>Pequeños cambios diarios que generan resultados extraordinarios en solo 3 semanas.</p>
+<a href="#">Leer más</a>
+</div>
 </section>
 
 <!-- Tienda -->
-<section id="tienda" class="tienda">
-<h3>Tienda de Descargables</h3>
-<ul>
-<li>Ebook Gratitud 21 días - 5€ <a href="#" class="button">Comprar</a></li>
-<li>Planificador Saludable - 9€ <a href="#" class="button">Comprar</a></li>
-<li>Plantilla Hábitos - 7€ <a href="#" class="button">Comprar</a></li>
-</ul>
-</section>
-
-<!-- Contacto -->
-<section id="contacto" class="section">
-<h2>Contacto / Soporte</h2>
-<p>Escríbenos cualquier duda o consulta:</p>
-<form>
-<input type="text" placeholder="Nombre" required style="padding:8px;margin:5px;width:200px;">
-<input type="email" placeholder="Correo" required style="padding:8px;margin:5px;width:200px;">
-<textarea placeholder="Mensaje" required style="padding:8px;margin:5px;width:400px;height:100px;"></textarea><br>
-<button type="submit" class="button">Enviar</button>
+<section class="section blog" id="tienda">
+<h2>Tienda de Descargables</h2>
+<div class="retos">
+<div class="reto">
+<img src="https://via.placeholder.com/300x180?text=Ebook+Gratitud" alt="Ebook Gratitud">
+<h3>Ebook Gratitud</h3>
+<p>Descubre ejercicios y plantillas para 21 días de gratitud.</p>
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+<input type="hidden" name="cmd" value="_xclick">
+<input type="hidden" name="business" value="lectoramazondkp@gmail.com">
+<input type="hidden" name="item_name" value="Ebook Gratitud">
+<input type="hidden" name="amount" value="4.99">
+<input type="hidden" name="currency_code" value="EUR">
+<input type="submit" value="Comprar 4,99€">
 </form>
-<p>También nos puedes encontrar en redes sociales: Instagram | TikTok | Facebook</p>
+</div>
+</div>
 </section>
 
-<footer>
-<p>© 2025 Reto21Días.com | Creando hábitos que transforman ✨</p>
+<!-- Footer -->
+<footer id="contacto">
+<h2>Suscríbete a nuestro boletín</h2>
+<form onsubmit="alert('¡Gracias por suscribirte!'); return false;">
+<input type="email" placeholder="Tu email" required>
+<input type="submit" value="Suscribirme">
+</form>
+<p>Síguenos en redes sociales:</p>
+<a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">TikTok</a>
+<p>Testimonio destacado: “¡Gracias a Reto21Días mi vida cambió en solo 3 semanas!” – Carla R.</p>
 </footer>
 
 <script>
-// Guardar progreso de los días en localStorage
-const daysList = document.getElementById('days-list');
-const medal = document.getElementById('medal');
-const storedDays = JSON.parse(localStorage.getItem('reto21dias')) || [];
+// Generar 21 días en el panel
+const diasContainer = document.getElementById('dias');
+const progressBar = document.getElementById('progress');
+let progreso = 0;
 
-function updateMedal() {
-  const allDone = [...daysList.children].every(li => li.classList.contains('done'));
-  medal.textContent = allDone ? "¡Felicidades! Has completado los 21 días y ganado tu medalla 🏅" : "";
-}
-
-[...daysList.children].forEach(li => {
-  if(storedDays.includes(li.dataset.day)) li.classList.add('done');
-  li.addEventListener('click', () => {
-    li.classList.toggle('done');
-    const doneDays = [...daysList.children].filter(l => l.classList.contains('done')).map(l => l.dataset.day);
-    localStorage.setItem('reto21dias', JSON.stringify(doneDays));
-    updateMedal();
-  });
-});
-
-updateMedal();
-</script>
-
-</body>
-</html>
+for(let i=1;i<=21;i++){
+  const div = document.createElement('div');
+  div.className='dia';
+  div.id='dia'+i;
+  div.innerHTML=`<h3>Día ${i}</h3><p>Contenido del día ${i}</p><button onclick="mar
