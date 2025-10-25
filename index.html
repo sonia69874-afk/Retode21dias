@@ -1,91 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Reto 21 Días</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<link rel="stylesheet" href="style.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Reto 21 Días — Recupera el Control</title>
+<meta name="description" content="Programa online: reto de 21 días para reducir ansiedad y mejorar hábitos alimentarios. Plan diario, seguimiento, recursos y comunidad." />
+<meta name="keywords" content="reto 21 dias, ansiedad, perder peso, hábitos, bienestar, mindfulness" />
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style>
+/* Estilos (idénticos a la versión previa con pequeñas mejoras) */
+:root{--accent:#2b6cb0;--muted:#6b7280;--bg:#f7f9fb;--card:#ffffff;--success:#16a34a}
+*{box-sizing:border-box}
+body{font-family:Inter,system-ui,Segoe UI,Roboto,Arial;line-height:1.5;margin:0;background:linear-gradient(180deg,#f7fbff 0%,var(--bg) 100%);color:#0f172a}
+header{background:linear-gradient(90deg,var(--accent),#1e3a8a);color:#fff;padding:28px 18px}
+.container{max-width:1100px;margin:0 auto;padding:18px}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:700;letter-spacing:0.2px}
+nav a{color:rgba(255,255,255,0.92);text-decoration:none;margin-left:12px;font-weight:600}
+.hero{display:flex;gap:18px;align-items:center;padding:28px 0}
+.hero-left{flex:1}
+.hero h1{margin:0;font-size:2rem}
+.lead{margin-top:10px;color:rgba(255,255,255,0.95);max-width:620px}
+.cta{margin-top:18px;display:flex;gap:10px}
+.btn{padding:12px 16px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+.btn-primary{background:#fff;color:var(--accent)}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.18);color:#fff}
+.hero-right{width:420px;background:rgba(255,255,255,0.06);padding:16px;border-radius:12px}
 
-  <!-- Header -->
-  <header>
-    <h1>Reto 21 Días</h1>
-    <nav>
-      <a href="#retos">Retos</a>
-      <a href="#testimonios">Testimonios</a>
-      <a href="#contacto">Contacto</a>
-    </nav>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>Transforma tu vida en solo 21 días</h1>
-    <p>Elige tu reto, recibe apoyo diario y alcanza tus metas.</p>
-    <button>Empezar mi primer reto</button>
-  </section>
+main{padding:28px 0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(12,15,30,0.06)}
+.card h3{margin:0 0 8px 0}
+.muted{color:var(--muted)}
 
-  <!-- Retos -->
-  <section id="retos">
-    <h2>Retos Disponibles</h2>
-    <div class="retos">
-      <div class="reto-card">
-        <h3>21 Días de Gratitud 🌸</h3>
-        <p>Aprende a ser más agradecido y mejorar tu día a día.</p>
-        <button>Unirme</button>
-      </div>
-      <div class="reto-card">
-        <h3>21 Días de Orden 🧹</h3>
-        <p>Organiza tu casa y tu mente en solo 3 semanas.</p>
-        <button>Unirme</button>
-      </div>
-      <div class="reto-card">
-        <h3>21 Días de Alimentación Saludable 🥗</h3>
-        <p>Cambia tus hábitos de comida paso a paso y siente energía.</p>
-        <button>Unirme</button>
-      </div>
-      <div class="reto-card">
-        <h3>21 Días de Meditación 🧘‍♀️</h3>
-        <p>Aprende a relajarte, controlar el estrés y mejorar tu foco.</p>
-        <button>Unirme</button>
-      </div>
-    </div>
-  </section>
 
-  <!-- Testimonios -->
-  <section id="testimonios">
-    <h2>Testimonios</h2>
-    <div class="testimonios">
-      <div class="testimonio-card">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Ana">
-        <p>"Gracias al reto de gratitud, ahora soy más positiva cada día." - Ana R.</p>
-      </div>
-      <div class="testimonio-card">
-        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Luis">
-        <p>"El reto de alimentación saludable me enseñó a comer bien y sentirme mejor." - Luis M.</p>
-      </div>
-      <div class="testimonio-card">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Marta">
-        <p>"La meditación diaria me cambió la vida, estoy más tranquila y feliz." - Marta P.</p>
-      </div>
-    </div>
-  </section>
+.program{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.day-list{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.day{background:linear-gradient(180deg,#fff,#fbfdff);padding:10px;border-radius:8px;border:1px solid #eef2ff;cursor:pointer}
+.day.completed{border-color:var(--success);box-shadow:inset 0 0 0 2px rgba(22,163,74,0.06)}
 
-  <!-- Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Escríbenos y te ayudaremos a empezar tu reto.</p>
-    <form action="#" method="POST">
-      <input type="text" placeholder="Nombre" required><br><br>
-      <input type="email" placeholder="Correo" required><br><br>
-      <textarea placeholder="Mensaje" required></textarea><br><br>
-      <button type="submit">Enviar</button>
-    </form>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Reto 21 Días | <a href="#">Política de Privacidad</a> | <a href="#">Términos y Condiciones</a></p>
-  </footer>
+aside{position:sticky;top:18px}
+.panel{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 6px 18px rgba(12,15,30,0.05)}
 
-</body>
-</html>
+
+.progress{height:14px;background:#eef2ff;border-radius:10px;overflow:hidden}
+.progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#4f46e5);width:0%}
+
+
+footer{padding:28px 0;color:var(--muted)}
+
+
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:10px}
+
+
+/* responsive */
+@media (max-width:900px){.cards{grid-template-columns:repeat(1,1fr)} .program{grid-template-columns:1fr} .hero{flex-direction:column} .hero-right{width:100%} .day-list{grid-template-columns:repeat(2,1fr)}}
+
