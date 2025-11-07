@@ -1,141 +1,447 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Reto 21 Días - Supera la Ansiedad</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>21 Días para Recuperar tu Calma — Reto profesional</title>
+  <meta name="description" content="Programa profesional de 21 días para gestionar la ansiedad. Contenido creado por un equipo de psicoterapia. Registro y descarga inmediata del manual premium.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- HERO + FORMULARIO -->
-  <section class="hero">
-    <div class="container">
-      <h1>Transforma tu vida en 21 días</h1>
-      <p>Únete al reto que ha ayudado a miles a superar la ansiedad y mejorar hábitos saludables.</p>
+  <!-- NAV -->
+  <header class="nav" role="banner">
+    <div class="container nav-inner">
+      <div class="brand" aria-label="Reto 21 Días">Reto <span class="brand-accent">21D</span></div>
+      <nav role="navigation" aria-label="Menú principal">
+        <a href="#benefits">Beneficios</a>
+        <a href="#programa">Programa</a>
+        <a href="#testimonios">Testimonios</a>
+        <a href="#recursos">Recursos</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
 
-      <!-- FORMULARIO FORMSPREE -->
-      <form action="https://formspree.io/f/mldoerlj" method="POST" id="registro">
-        <label>
-          Tu nombre:
-          <input type="text" name="name" placeholder="Tu nombre" required>
-        </label>
-        <label>
-          Tu correo electrónico:
-          <input type="email" name="email" placeholder="Tu correo electrónico" required>
-        </label>
-        <button type="submit">Inscríbete gratis</button>
-      </form>
+  <!-- HERO -->
+  <section class="hero" aria-label="Hero: Regístrate">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>21 Días para Recuperar tu Calma</h1>
+        <p class="lead">Programa premium diseñado por un equipo profesional de psicoterapia. Técnicas prácticas (Mindfulness, respiración, TCC) y herramientas para reducir la ansiedad, mejorar el sueño y crear hábitos sostenibles.</p>
+
+        <div class="form-panel" aria-live="polite">
+          <h4>Acceso inmediato al manual profesional</h4>
+          <form id="registro-form" class="form" autocomplete="on" novalidate>
+            <div class="form-row">
+              <label class="sr-only" for="name">Nombre completo</label>
+              <input id="name" name="name" type="text" placeholder="Tu nombre completo" required>
+            </div>
+            <div class="form-row">
+              <label class="sr-only" for="email">Correo electrónico</label>
+              <input id="email" name="email" type="email" placeholder="Tu correo electrónico" required>
+            </div>
+            <div class="form-row actions">
+              <button type="submit" class="btn btn-primary">Inscribirme y recibir el manual</button>
+            </div>
+            <div id="form-status" class="form-status" aria-live="assertive"></div>
+            <small class="terms">Al registrarte aceptas recibir comunicaciones relacionadas al programa.</small>
+          </form>
+        </div>
+
+        <div class="trust">
+          <span class="pill">Equipo profesional</span>
+          <span class="pill">Material clínico validado</span>
+          <span class="pill">Acceso inmediato</span>
+        </div>
+      </div>
+
+      <div class="hero-visual" aria-hidden="false">
+        <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=60" alt="Persona en calma mirando hacia el horizonte">
+        <div class="hero-badge">Reto certificado • 21 días</div>
+      </div>
     </div>
   </section>
 
   <!-- BENEFICIOS -->
-  <section class="benefits">
+  <section id="benefits" class="section benefits" aria-labelledby="beneficios-h">
     <div class="container">
-      <h2>¿Qué lograrás en 21 días?</h2>
-      <div class="benefit">
-        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=tinysrgb&fit=max&h=200&w=200" alt="Respiración">
-        <h3>Día 1-7</h3>
-        <p>Respiración consciente, mindfulness y meditación diaria para controlar la ansiedad.</p>
+      <h2 id="beneficios-h">Qué conseguirás en 21 días</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-media"><img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=600&q=60" alt=""></div>
+          <h3>Control emocional</h3>
+          <p>Técnicas de respiración, mindfulness y regulación emocional para bajar el nivel de activación cuando aparezca la ansiedad.</p>
+        </article>
+        <article class="card">
+          <div class="card-media"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=600&q=60" alt=""></div>
+          <h3>Reestructuración cognitiva</h3>
+          <p>Herramientas prácticas para identificar pensamientos automáticos y transformarlos en interpretaciones equilibradas.</p>
+        </article>
+        <article class="card">
+          <div class="card-media"><img src="https://images.unsplash.com/photo-1524503033411-c9566986fc8f?auto=format&fit=crop&w=600&q=60" alt=""></div>
+          <h3>Hábitos sostenibles</h3>
+          <p>Rutinas diarias y tabla de seguimiento para que los cambios sean duraderos y medibles.</p>
+        </article>
       </div>
-      <div class="benefit">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&h=200&w=200" alt="Pensamientos positivos">
-        <h3>Día 8-14</h3>
-        <p>Técnicas para reestructurar pensamientos negativos y mantener la calma.</p>
-      </div>
-      <div class="benefit">
-        <img src="https://images.unsplash.com/photo-1507537297725-24a1c029d3ca?crop=entropy&cs=tinysrgb&fit=max&h=200&w=200" alt="Hábitos saludables">
-        <h3>Día 15-21</h3>
-        <p>Consolidación de hábitos saludables y seguimiento de progreso real.</p>
+    </div>
+  </section>
+
+  <!-- PROGRAMA (detalle comprimido con accordion para cada día) -->
+  <section id="programa" class="section program" aria-labelledby="programa-h">
+    <div class="container">
+      <h2 id="programa-h">Programa Día a Día — Resumen</h2>
+      <p class="muted">Cada día en el PDF incluye: objetivo, ejercicio guiado, hoja de trabajo y reflexión.</p>
+
+      <div class="accordion" id="program-accordion">
+        <!-- We'll include 21 items. Each item is concise here; el PDF contiene la versión ampliada -->
+        <!-- Day 1 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-1" data-target="day-1">
+          <span>Día 1 — Evaluación y respiración 4-4-8</span>
+          <span class="chev">▸</span>
+        </button>
+        <div id="day-1" class="accordion-panel" hidden>
+          <p><strong>Objetivo:</strong> detectar tu nivel de activación y aprender respiración reguladora.</p>
+          <ol>
+            <li>Autoevaluación 0–10.</li>
+            <li>Respiración 4–4–8: prácticas en 2 series de 6 repeticiones.</li>
+            <li>Registro breve (3 frases): cambios percibidos.</li>
+          </ol>
+        </div>
+
+        <!-- Day 2 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-2" data-target="day-2">
+          <span>Día 2 — Identificación de pensamientos automáticos</span><span class="chev">▸</span>
+        </button>
+        <div id="day-2" class="accordion-panel" hidden>
+          <p><strong>Objetivo:</strong> aprender a detectar pensamientos que alimentan ansiedad.</p>
+          <ol>
+            <li>Registro de 3 pensamientos automáticos durante el día.</li>
+            <li>Pregunta de contraste: ¿qué evidencia los sostiene?</li>
+            <li>Construir una alternativa equilibrada.</li>
+          </ol>
+        </div>
+
+        <!-- Day 3 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-3" data-target="day-3">
+          <span>Día 3 — Relajación muscular progresiva</span><span class="chev">▸</span>
+        </button>
+        <div id="day-3" class="accordion-panel" hidden>
+          <p>Ejercicio guiado de tensión/relajación en 10–12 minutos. Documento de apoyo en el PDF.</p>
+        </div>
+
+        <!-- Day 4 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-4" data-target="day-4">
+          <span>Día 4 — Meditación guiada (15 min)</span><span class="chev">▸</span>
+        </button>
+        <div id="day-4" class="accordion-panel" hidden>
+          <p>Meditación de atención a la respiración con pausas guiadas. Enlace a audio en recursos.</p>
+        </div>
+
+        <!-- Day 5 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-5" data-target="day-5">
+          <span>Día 5 — Escritura terapéutica</span><span class="chev">▸</span>
+        </button>
+        <div id="day-5" class="accordion-panel" hidden>
+          <p>Escribe 10 minutos: identifica emociones y extrae una enseñanza práctica.</p>
+        </div>
+
+        <!-- Days 6–21 (resumidos por espacio; el PDF contiene la versión ampliada y las hojas) -->
+        <!-- Day 6 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-6" data-target="day-6">
+          <span>Día 6 — Movimiento consciente y estiramientos</span><span class="chev">▸</span>
+        </button>
+        <div id="day-6" class="accordion-panel" hidden>
+          <p>Rutina breve matinal de estiramientos y caminata consciente de 15 minutos.</p>
+        </div>
+
+        <!-- Day 7 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-7" data-target="day-7">
+          <span>Día 7 — Revisión semanal y ajuste</span><span class="chev">▸</span>
+        </button>
+        <div id="day-7" class="accordion-panel" hidden>
+          <p>Autoevaluación y ajuste de metas; checklist semanal incluida en el PDF.</p>
+        </div>
+
+        <!-- Day 8 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-8" data-target="day-8">
+          <span>Día 8 — Respiraciones avanzadas</span><span class="chev">▸</span>
+        </button>
+        <div id="day-8" class="accordion-panel" hidden>
+          <p>Técnicas de coherencia cardíaca y respiración diafragmática.</p>
+        </div>
+
+        <!-- Day 9 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-9" data-target="day-9">
+          <span>Día 9 — Alimentación consciente</span><span class="chev">▸</span>
+        </button>
+        <div id="day-9" class="accordion-panel" hidden>
+          <p>Práctica de mindful eating: comer con atención plena durante una comida.</p>
+        </div>
+
+        <!-- Day 10 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-10" data-target="day-10">
+          <span>Día 10 — Visualizaciones y autoafirmaciones</span><span class="chev">▸</span>
+        </button>
+        <div id="day-10" class="accordion-panel" hidden>
+          <p>Ejercicio de visualización orientada a objetivos y plan de acción semanal.</p>
+        </div>
+
+        <!-- Day 11 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-11" data-target="day-11">
+          <span>Día 11 — Activación física leve</span><span class="chev">▸</span>
+        </button>
+        <div id="day-11" class="accordion-panel" hidden>
+          <p>Caminata consciente o yoga suave + registro de emociones post-ejercicio.</p>
+        </div>
+
+        <!-- Day 12 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-12" data-target="day-12">
+          <span>Día 12 — Revisión de pensamientos y hábitos</span><span class="chev">▸</span>
+        </button>
+        <div id="day-12" class="accordion-panel" hidden>
+          <p>Analiza patrones cognitivos y diseña una acción correctora diaria.</p>
+        </div>
+
+        <!-- Day 13 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-13" data-target="day-13">
+          <span>Día 13 — Relajación muscular y sueño</span><span class="chev">▸</span>
+        </button>
+        <div id="day-13" class="accordion-panel" hidden>
+          <p>Técnicas para preparar la higiene del sueño y reducir rumiación nocturna.</p>
+        </div>
+
+        <!-- Day 14 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-14" data-target="day-14">
+          <span>Día 14 — Gratitud y enfoque positivo</span><span class="chev">▸</span>
+        </button>
+        <div id="day-14" class="accordion-panel" hidden>
+          <p>Ejercicio: diario de gratitud (3 ítems diarios) + impacto en estado de ánimo.</p>
+        </div>
+
+        <!-- Day 15 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-15" data-target="day-15">
+          <span>Día 15 — Mindfulness en la vida cotidiana</span><span class="chev">▸</span>
+        </button>
+        <div id="day-15" class="accordion-panel" hidden>
+          <p>Incorpora prácticas de 3 minutos durante actividades diarias (lavar manos, cocinar).</p>
+        </div>
+
+        <!-- Day 16 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-16" data-target="day-16">
+          <span>Día 16 — Cardio suave y regulación</span><span class="chev">▸</span>
+        </button>
+        <div id="day-16" class="accordion-panel" hidden>
+          <p>Ejercicio aeróbico leve (20 min) y respiración post-ejercicio para bajar activación.</p>
+        </div>
+
+        <!-- Day 17 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-17" data-target="day-17">
+          <span>Día 17 — Autoafirmaciones y planeamiento</span><span class="chev">▸</span>
+        </button>
+        <div id="day-17" class="accordion-panel" hidden>
+          <p>Construcción de frases personales para afrontar situaciones de ansiedad.</p>
+        </div>
+
+        <!-- Day 18 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-18" data-target="day-18">
+          <span>Día 18 — Meditación larga 20 min</span><span class="chev">▸</span>
+        </button>
+        <div id="day-18" class="accordion-panel" hidden>
+          <p>Meditación de observación de sensaciones y práctica de aceptación.</p>
+        </div>
+
+        <!-- Day 19 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-19" data-target="day-19">
+          <span>Día 19 — Rutina nocturna y sueño reparador</span><span class="chev">▸</span>
+        </button>
+        <div id="day-19" class="accordion-panel" hidden>
+          <p>Protocolos para mejorar higiene del sueño y reducir rumiación.</p>
+        </div>
+
+        <!-- Day 20 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-20" data-target="day-20">
+          <span>Día 20 — Evaluación final y consolidación</span><span class="chev">▸</span>
+        </button>
+        <div id="day-20" class="accordion-panel" hidden>
+          <p>Comparativa pre/post y plan de mantenimiento.</p>
+        </div>
+
+        <!-- Day 21 -->
+        <button class="accordion-toggle" aria-expanded="false" aria-controls="day-21" data-target="day-21">
+          <span>Día 21 — Plan a 3 meses y recursos</span><span class="chev">▸</span>
+        </button>
+        <div id="day-21" class="accordion-panel" hidden>
+          <p>Plan de seguimiento a 1, 2 y 3 meses. Recursos y contactos profesionales.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- TESTIMONIOS -->
-  <section class="testimonials">
+  <section id="testimonios" class="section testimonials" aria-labelledby="test-h">
     <div class="container">
-      <h2>Lo que dicen nuestros participantes</h2>
-      <div class="testimonial">
-        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Participante 1">
-        <p>"Este reto cambió mi vida. Ahora me siento en control y en paz."</p>
-        <p>- Ana G., Psicóloga</p>
-      </div>
-      <div class="testimonial">
-        <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Participante 2">
-        <p>"Las técnicas aprendidas me ayudaron a reducir mi ansiedad significativamente."</p>
-        <p>- Carlos M., Ingeniero</p>
-      </div>
-      <div class="testimonial">
-        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Participante 3">
-        <p>"Me encantó la organización del programa. Fácil de seguir y muy efectivo."</p>
-        <p>- Laura R., Diseñadora</p>
+      <h2 id="test-h">Testimonios</h2>
+      <div class="test-grid">
+        <figure class="testimonial">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="María">
+          <blockquote>«Gracias a las prácticas diarias mi reactividad bajó y volví a dormir.»</blockquote>
+          <figcaption>— María P., 34</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Carlos">
+          <blockquote>«Material clínico, claro y práctico. Lo recomiendo 100%.»</blockquote>
+          <figcaption>— Carlos M., 39</figcaption>
+        </figure>
+        <figure class="testimonial">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Laura">
+          <blockquote>«El manual es completísimo y profesional, con hojas para imprimir.»</blockquote>
+          <figcaption>— Laura R., 29</figcaption>
+        </figure>
       </div>
     </div>
   </section>
 
-  <!-- PROGRAMA DE 21 DÍAS -->
-  <section class="program">
+  <!-- RECURSOS / DESCARGA -->
+  <section id="recursos" class="section recursos" aria-labelledby="rec-h">
     <div class="container">
-      <h2>Programa Día a Día</h2>
-      <ul>
-        <li><strong>Día 1:</strong> Respiración profunda y conciencia corporal.</li>
-        <li><strong>Día 2:</strong> Identificación de pensamientos ansiosos.</li>
-        <li><strong>Día 3:</strong> Técnicas de relajación progresiva.</li>
-        <li><strong>Día 4:</strong> Meditación guiada de 15 minutos.</li>
-        <li><strong>Día 5:</strong> Escritura terapéutica y reflexión diaria.</li>
-        <li><strong>Día 6:</strong> Estiramientos y activación física suave.</li>
-        <li><strong>Día 7:</strong> Evaluación de progreso semanal.</li>
-        <li><strong>Día 8:</strong> Técnicas avanzadas de respiración y relajación.</li>
-        <li><strong>Día 9:</strong> Alimentación consciente y mindful eating.</li>
-        <li><strong>Día 10:</strong> Meditación de visualización positiva.</li>
-        <li><strong>Día 11:</strong> Ejercicio físico leve y respiración consciente.</li>
-        <li><strong>Día 12:</strong> Revisión de metas y ajustes de hábitos.</li>
-        <li><strong>Día 13:</strong> Relajación muscular progresiva.</li>
-        <li><strong>Día 14:</strong> Diario de gratitud y enfoque positivo.</li>
-        <li><strong>Día 15:</strong> Mindfulness en actividades cotidianas.</li>
-        <li><strong>Día 16:</strong> Rutina de cardio suave y respiración profunda.</li>
-        <li><strong>Día 17:</strong> Autoafirmaciones y visualización positiva.</li>
-        <li><strong>Día 18:</strong> Meditación guiada de 20 minutos.</li>
-        <li><strong>Día 19:</strong> Relajación antes de dormir y sueño reparador.</li>
-        <li><strong>Día 20:</strong> Evaluación final y consolidación de hábitos.</li>
-        <li><strong>Día 21:</strong> Reflexión final y planificación de hábitos duraderos.</li>
-      </ul>
+      <h2 id="rec-h">Recursos descargables</h2>
+      <p class="muted">El manual premium y las hojas de trabajo están disponibles en PDF.</p>
+      <div class="resource-list">
+        <a class="resource" href="reto21dias_premium.pdf" target="_blank" rel="noopener" download>
+          <strong>Manual premium — Reto 21 Días (PDF)</strong>
+          <span>Descarga inmediata</span>
+        </a>
+        <a class="resource disabled" href="#" aria-disabled="true">
+          <strong>Audio de meditación 15 min</strong>
+          <span>Incluido en la versión completa del manual</span>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="faq">
+  <section id="faq" class="section faq" aria-labelledby="faq-h">
     <div class="container">
-      <h2>Preguntas Frecuentes</h2>
-      <div class="question">
-        <h3>¿Es necesario tener experiencia previa?</h3>
-        <p>No, el reto está diseñado para principiantes y personas de cualquier nivel.</p>
-      </div>
-      <div class="question">
-        <h3>¿Puedo acceder al contenido después de los 21 días?</h3>
-        <p>Sí, tendrás acceso completo al material en cualquier momento.</p>
-      </div>
-      <div class="question">
-        <h3>¿Necesito equipo especial?</h3>
-        <p>No, todas las actividades se pueden hacer desde casa sin equipo adicional.</p>
+      <h2 id="faq-h">Preguntas frecuentes</h2>
+      <div class="faq-grid">
+        <details><summary>¿Necesito experiencia previa?</summary><p>No, el programa está pensado para cualquier nivel.</p></details>
+        <details><summary>¿Cuánto tiempo debo dedicar cada día?</summary><p>Entre 15 y 30 minutos, según la práctica del día.</p></details>
+        <details><summary>¿Se incluyen audios y hojas imprimibles?</summary><p>Sí: hojas imprimibles en el PDF; audios disponibles como recurso vinculado.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- CTA FINAL -->
-  <section class="cta">
-    <div class="container">
-      <h2>Comienza tu transformación hoy</h2>
-      <a href="#registro" class="cta-button">Inscríbete ahora</a>
+  <!-- CTA / PRECIOS -->
+  <section class="section cta" aria-label="Call to action">
+    <div class="container cta-grid">
+      <div>
+        <h2>¿Listo para empezar?</h2>
+        <p class="muted">Registro inmediato y manual profesional. Empieza hoy y haz seguimiento.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="#registro-form">Inscríbete gratis</a>
+        <a class="btn btn-outline" href="mailto:tuemail@dominio.com">Contacto profesional</a>
+      </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer>
+  <footer class="footer" role="contentinfo">
     <div class="container">
-      <p>&copy; 2025 Reto 21 Días. Todos los derechos reservados.</p>
+      <div class="smallprint">© 2025 Reto 21 Días — Material elaborado por equipo profesional de psicoterapia. Este material es informativo y no sustituye la atención clínica individual.</div>
     </div>
   </footer>
+
+<script>
+/* ---------- CONFIG ----------- */
+/* Reemplaza aquí si tu endpoint es distinto */
+const FORM_ENDPOINT = 'https://formspree.io/f/mldoerlj';
+const PDF_FILE = 'reto21dias_premium.pdf'; // nombre exacto del PDF subido al repo
+/* ---------------------------- */
+
+(function(){
+  // Smooth scroll for internal links
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click', function(e){
+      const target = document.querySelector(this.getAttribute('href'));
+      if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  // Accordion toggles (program)
+  document.querySelectorAll('.accordion-toggle').forEach(btn=>{
+    btn.addEventListener('click', function(){
+      const id = this.dataset.target;
+      const panel = document.getElementById(id);
+      const expanded = this.getAttribute('aria-expanded') === 'true';
+      this.setAttribute('aria-expanded', String(!expanded));
+      if(panel){
+        if(expanded){ panel.hidden = true; this.querySelector('.chev').textContent = '▸'; }
+        else { panel.hidden = false; this.querySelector('.chev').textContent = '▾'; panel.scrollIntoView({behavior:'smooth', block:'center'}); }
+      }
+    });
+  });
+
+  // Form: submit via fetch to Formspree and on success show / download PDF
+  const form = document.getElementById('registro-form');
+  const statusEl = document.getElementById('form-status');
+
+  if(form){
+    form.addEventListener('submit', async function(e){
+      e.preventDefault();
+      statusEl.textContent = '';
+      statusEl.className = 'form-status';
+      const name = form.querySelector('[name="name"]').value.trim();
+      const email = form.querySelector('[name="email"]').value.trim();
+      if(!name || !email){ statusEl.textContent = 'Completa nombre y correo.'; statusEl.classList.add('error'); return; }
+
+      statusEl.textContent = 'Enviando...';
+      statusEl.classList.add('sending');
+
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('_subject', 'Nuevo registro - Reto 21D');
+
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: formData
+        });
+
+        if(res.ok){
+          statusEl.textContent = 'Registro recibido. Accediendo al material…';
+          statusEl.classList.remove('sending'); statusEl.classList.add('success');
+
+          // mostrar panel premium integrado y lanzar descarga
+          // scroll al recurso
+          setTimeout(() => {
+            // abrir sección recursos y forzar descarga
+            const resources = document.getElementById('recursos');
+            if(resources) resources.scrollIntoView({behavior:'smooth', block:'center'});
+            // iniciar descarga invisible
+            const a = document.createElement('a');
+            a.href = PDF_FILE;
+            a.download = PDF_FILE.split('/').pop();
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+          }, 700);
+
+        } else {
+          const json = await res.json().catch(()=>null);
+          statusEl.textContent = json?.error || 'Error al enviar. Intenta de nuevo.';
+          statusEl.classList.add('error');
+        }
+      } catch(err){
+        statusEl.textContent = 'Error de red. Comprueba tu conexión.';
+        statusEl.classList.add('error');
+      }
+    });
+  }
+})();
+</script>
 
 </body>
 </html>
